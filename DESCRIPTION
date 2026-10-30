@@ -33,8 +33,8 @@ Description: Provides curated access to gridded environmental data
     analysis-ready data.table. Access to the TERN datasets using this
     package requires a TERN API key.
 License: MIT + file LICENSE
-URL: https://aagi-aus.github.io/nert/, https://github.com/AAGI-AUS/nert
-BugReports: https://github.com/AAGI-AUS/nert/issues
+URL: https://aagi-aus.github.io/nert/, https://github.com/ropensci/nert
+BugReports: https://github.com/ropensci/nert/issues
 Depends: 
     R (>= 4.1.0)
 Imports:

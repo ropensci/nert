@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 # nert <img src="man/figures/logo.png" style="float:right;" alt="logo" width="120" />
 
 <!-- badges: start -->
-[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![R-CMD-check](https://github.com/AAGI-AUS/nert/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AAGI-AUS/nert/actions/workflows/R-CMD-check.yaml) [![codecov](https://codecov.io/gh/AAGI-AUS/nert/graph/badge.svg?token=WgBeTrqQnQ)](https://app.codecov.io/gh/AAGI-AUS/nert) [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/785_status.svg)](https://github.com/ropensci/software-review/issues/785) <!-- badges: end -->
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![R-CMD-check](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml) [![codecov](https://codecov.io/gh/ropensci/nert/graph/badge.svg?token=WgBeTrqQnQ)](https://app.codecov.io/gh/ropensci/nert) [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/785_status.svg)](https://github.com/ropensci/software-review/issues/785) <!-- badges: end -->
 
 The {nert} package streamlines access to various Cloud-Optimised GeoTIFF (COG) datasets provided by the Australian Terrestrial Ecosystem Research Network (TERN), allowing you to easily incorporate these environmental datasets into your R analytics.
 Currently supported datasets in the {nert} package include:
@@ -44,7 +44,7 @@ To get started:
 ```r
 options(
   repos = c(
-    AAGI = "https://aagi-aus.r-universe.dev",
+    AAGI = "https://ropensci.r-universe.dev",
     CRAN = "https://cloud.r-project.org"
   )
 )
@@ -61,7 +61,7 @@ install.packages("nert")
 Note that for Linux users, you will need to install system libraries to support geospatial packages in R, *e.g.*, {sf} and {terra} as well as some packages for downloading data via [curl](https://curl.se/download.html), please see [Note for Linux Installers](#Note-for-Linux-Installers).
 If you run into errors, *e.g.*, `Bad GitHub Credentials`, please read this: [Managing Git(Hub) Credentials](https://usethis.r-lib.org/articles/git-credentials.html) and set up your GitHub credentials in R and try again.
 
-You can install the development version of {nert} from [GitHub](https://github.com/AAGI-AUS/nert) with:
+You can install the development version of {nert} from [GitHub](https://github.com/ropensci/nert) with:
 
 ```{r}
 #| label: install
@@ -83,7 +83,7 @@ if (!require("pak")) {
   )
 }
 
-pak::pak("AAGI-AUS/nert")
+pak::pak("ropensci/nert")
 options(o) # reset options
 ```
 

@@ -5,8 +5,8 @@
   "description": "Provides curated access to gridded environmental data published by Australia's Terrestrial Ecosystem Research Network (TERN; <https://www.tern.org.au/>), spanning national soil attribute, soil classification, soil biodiversity, soil moisture, actual evapotranspiration, vegetation canopy height and phenology products. The package reads Cloud-Optimised GeoTIFF and virtual raster files directly from the TERN data server via GDAL /vsicurl range requests, streaming only the requested spatial and temporal subset for efficient data transfer. The environmental raster data are returned as terra::SpatRaster objects. A convenient helper function is also provided that provides a batch-download capability given specific locations and dates, returning the extracted data values in an analysis-ready data.table. Access to the TERN datasets using this package requires a TERN API key.",
   "name": "nert: Curated Access to TERN Environmental Raster Data",
   "relatedLink": "https://aagi-aus.github.io/nert/",
-  "codeRepository": "https://github.com/AAGI-AUS/nert",
-  "issueTracker": "https://github.com/AAGI-AUS/nert/issues",
+  "codeRepository": "https://github.com/ropensci/nert",
+  "issueTracker": "https://github.com/ropensci/nert/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "2.0.0",
   "programmingLanguage": {
@@ -294,8 +294,8 @@
       "description": "R package version 2.0.0"
     }
   ],
-  "releaseNotes": "https://github.com/AAGI-AUS/nert/blob/main/NEWS.md",
-  "readme": "https://github.com/AAGI-AUS/nert/blob/main/README.md",
+  "releaseNotes": "https://github.com/ropensci/nert/blob/main/NEWS.md",
+  "readme": "https://github.com/ropensci/nert/blob/main/README.md",
   "contIntegration": ["https://github.com/AAGI-AUS/nert/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/AAGI-AUS/nert"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "review": {

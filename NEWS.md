@@ -98,7 +98,7 @@ review.
   wrapper over `read_tern("SMIPS", ...)` (PR #26) but was not
   surfaced in `NEWS.md` at the time; this 1.0.0 entry corrects the
   omission per
-  [#35](https://github.com/AAGI-AUS/nert/issues/35).
+  [#35](https://github.com/ropensci/nert/issues/35).
 
 ## New features
 
@@ -108,7 +108,7 @@ review.
   `options(nert.max_tries = 5L, nert.initial_delay = 2L)` in your
   `.Rprofile` to apply across every `read_*()` and `collect_tern_data()`
   call. Closes
-  [#20](https://github.com/AAGI-AUS/nert/issues/20).
+  [#20](https://github.com/ropensci/nert/issues/20).
 
 ## Performance
 

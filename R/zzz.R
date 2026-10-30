@@ -3,7 +3,7 @@
 # Pattern adapted from {read.abares} (Adam H. Sparks, rOpenSci-review):
 # https://github.com/ropensci/read.abares/blob/main/R/zzz.R
 #
-# Closes AAGI-AUS/nert#20.
+# Closes ropensci/nert#20.
 
 # nocov start
 .onLoad <- function(libname, pkgname) {
