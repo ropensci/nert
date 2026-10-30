@@ -39,7 +39,7 @@ authors:
     orcid: "https://orcid.org/0000-0001-9680-8474"
 version: "2.0.0"
 license: MIT
-repository-code: "https://github.com/AAGI-AUS/nert"
+repository-code: "https://github.com/ropensci/nert"
 url: "https://aagi-aus.github.io/nert/"
 keywords:
   - TERN

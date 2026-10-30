@@ -4,9 +4,9 @@ Thank you for your interest in `nert`. There are several places to get help.
 
 ## Questions about how to use the package
 
-* Open a [GitHub Discussion](https://github.com/AAGI-AUS/nert/discussions)
+* Open a [GitHub Discussion](https://github.com/ropensci/nert/discussions)
   if the question is broad ("how would I use `read_tern()` to do X").
-* Open a [GitHub Issue](https://github.com/AAGI-AUS/nert/issues) if you
+* Open a [GitHub Issue](https://github.com/ropensci/nert/issues) if you
   believe you have hit a bug or surprising behaviour. Please include a
   minimal reproducible example.
 

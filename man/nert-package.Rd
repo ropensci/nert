@@ -13,9 +13,9 @@ Provides curated access to gridded environmental data published by Australia's T
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://aagi-aus.github.io/nert/}
-  \item \url{https://github.com/AAGI-AUS/nert}
-  \item Report bugs at \url{https://github.com/AAGI-AUS/nert/issues}
+  \item \url{https://docs.ropensci.org/nert}
+  \item \url{https://github.com/ropensci/nert}
+  \item Report bugs at \url{https://github.com/ropensci/nert/issues}
 }
 
 }
