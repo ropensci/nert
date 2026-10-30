@@ -21,6 +21,6 @@ bibentry(
     format(Sys.Date(), "%Y"),
     "). nert: Curated Access to TERN Environmental Raster Data. R package version ",
     vers,
-    ". https://aagi-aus.github.io/nert/"
+    ". https://docs.ropensci.org/nert"
   )
 )
