@@ -15,7 +15,7 @@ bibentry(
   ),
   year = format(Sys.Date(), "%Y"),
   note = paste("R package version", vers),
-  url = "https://aagi-aus.github.io/nert/",
+  url = "https://docs.ropensci.org/nert",
   textVersion = paste0(
     "Sparks AH, Pipattungsakul W, Edson R, Rogers S, Moldovan M (",
     format(Sys.Date(), "%Y"),
