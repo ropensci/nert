@@ -1,6 +1,6 @@
----
-output: github_document
----
+  -------------------------
+  output: github_document
+  -------------------------
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -33,7 +33,7 @@ To get started:
 ```r
 options(
   repos = c(
-    AAGI = "https://ropensci.r-universe.dev",
+    ropensci = "https://ropensci.r-universe.dev",
     CRAN = "https://cloud.r-project.org"
   )
 )
@@ -42,7 +42,7 @@ options(
 ### Install
 
 ```r
-install.packages("nert")
+install.packages("nert", dependencies = TRUE)
 ```
 
 ### The hard(er) way
@@ -70,7 +70,7 @@ if (!require("pak")) {
   )
 }
 
-pak::pak("ropensci/nert")
+pak::pak("ropensci/nert", dependencies = TRUE)
 options(o) # reset options
 ```
 
@@ -98,7 +98,6 @@ Note that since these are cloud-optimised COGs, they employ Just-In-Time data st
 
 ``` r
 library(nert)
-library(terra)
 
 r <- read_smips(date = "2024-01-01")
 extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))
@@ -108,7 +107,7 @@ extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))
 #> 1│    1│                           46│  139│  -35
 ```
 
-Plot the Australia-wide rasters with `plot()`.
+Plot the Australia-wide rasters with `plot()`, the `plot()` from {terra} is re-exported by this package, so there is no need to load that package as well, just having {nert} loaded is enough.
 
 
 ``` r
@@ -200,8 +199,8 @@ citation("nert")
 #> To cite package 'nert' in publications use:
 #> 
 #>   Sparks AH, Pipattungsakul W, Edson R, Rogers S, Moldovan M (2026). nert:
-#>   Curated Access to TERN Environmental Raster Data. R package version 2.0.0.
-#>   https://aagi-aus.github.io/nert/
+#>   Curated Access to TERN Environmental Raster Data. R package version 2.0.1.
+#>   https://docs.ropensci.org/nert
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -209,7 +208,7 @@ citation("nert")
 #>     title = {{nert}: Curated Access to TERN Environmental Raster Data},
 #>     author = {Adam H. Sparks and Wasin Pipattungsakul and Russell Edson and Sam Rogers and Max Moldovan},
 #>     year = {2026},
-#>     note = {R package version 2.0.0},
-#>     url = {https://aagi-aus.github.io/nert/},
+#>     note = {R package version 2.0.1},
+#>     url = {https://docs.ropensci.org/nert},
 #>   }
 ```

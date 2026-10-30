@@ -131,6 +131,7 @@ r <- read_smips(date = "2025-06-30", collection = "SMindex")
 ```
 
 Plot the data with `plot()`.
+Note that {nert} re-exports {terra}'s `plot()`, so if simply want the whole data set, you can just retrieve it and use `plot()` on the resulting data without loading {terra}.
 
 ```{r, test-plot-smips, fig.cap = "A plot of SMIPS SMindex data for all of Australia on 2025-06-30."}
 plot(r)

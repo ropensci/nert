@@ -184,7 +184,7 @@
 #' # Using aliases (recommended)
 #' r <- read_tern("SMIPS", date = "2024-01-15")
 #' r_asc <- read_tern("ASC")
-#' terra::plot(r_asc)
+#' plot(r_asc)
 #'
 #' # SLGA soil attributes
 #' r_clay <- read_tern("CLY", depth = "000_005")
