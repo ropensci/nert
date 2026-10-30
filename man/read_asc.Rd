@@ -57,11 +57,11 @@ the classification.
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 # Australian Soil Classification (soil orders as character)
 r_asc <- read_asc()
-terra::plot(r_asc)
+plot(r_asc)
 
 # Confusion Index (uncertainty of the classification, higher=more uncertain)
 r_ci <- read_asc(collection = "CI")
-terra::plot(r_ci)
+plot(r_ci)
 \dontshow{\}) # examplesIf}
 }
 \references{
