@@ -17,7 +17,7 @@ datasets into your R analytics. Currently supported datasets in the
   Vegetation Index (EVI) data,
 - Soil and Landscape Grid of Australia (SLGA) datasets, including
   available volumetric water capacity, clay/sand/silt content, bulk
-  density (whole earth) measurements, soil pH (CaCl2 and water),
+  density (whole earth) measurements, soil pH (CaCl₂ and water),
   nitrogen and phosphorus content, cation exchange capacity (CEC), and
   the drained upper limit and 15-bar lower limit water content readings,
 - Soil bacteria and soil fungi Beta Diversity datasets.
@@ -129,17 +129,13 @@ disk-space savings.
 
 library(nert)
 library(terra)
-#> terra 1.9.46
 
 r <- read_smips(date = "2024-01-01")
-#> Warning: nert has set the GDAL option `GDAL_HTTP_USERPWD` to your TERN API key for the
-#> rest of this R session.
-#> ℹ GDAL sends the key with every `/vsicurl` request in this session, including
-#>   requests to servers other than TERN.
-#> ℹ Restart R to clear it.
 extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))
-#>   ID smips_totalbucket_mm_20240101        x         y
-#> 1  1                      46.07692 138.6037 -34.93254
+#> # Data frame like object (class data.frame) 4 x 1:
+#>  │ID   │smips_totalbucket_mm_20240101│x    │y    
+#>  │<dbl>│<dbl>                        │<dbl>│<dbl>
+#> 1│    1│                           46│  139│  -35
 ```
 
 Plot the Australia-wide rasters with
@@ -245,9 +241,9 @@ To cite nert:
 citation("nert")
 #> To cite package 'nert' in publications use:
 #> 
-#>   Sparks AH, Pipattungsakul W, Edson R, Rogers S, Moldovan M (2026).
-#>   nert: Curated Access to TERN Environmental Raster Data. R package
-#>   version 2.0.0. https://aagi-aus.github.io/nert/
+#>   Sparks AH, Pipattungsakul W, Edson R, Rogers S, Moldovan M (2026). nert:
+#>   Curated Access to TERN Environmental Raster Data. R package version 2.0.0.
+#>   https://aagi-aus.github.io/nert/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 

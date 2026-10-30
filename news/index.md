@@ -8,9 +8,7 @@
   [`plot()`](https://rspatial.github.io/terra/reference/plot.html) from
   terra. Code that called
   [`autoplot()`](https://ggplot2.tidyverse.org/reference/autoplot.html)
-  can use
-  [`tidyterra::autoplot()`](https://ggplot2.tidyverse.org/reference/autoplot.html)
-  instead.
+  can use `tidyterra::autoplot()` instead.
 
 - nert now requires R 4.1.0 or later, the oldest version on which
   testthat installs.
