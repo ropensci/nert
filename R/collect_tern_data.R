@@ -219,7 +219,10 @@ collect_tern_data <- function(
   # terra::extract() reopens each file, so the extensions stay set for the loop
   old_ext <- terra::getGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS")
   terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", ".tif,.vrt,.aux.xml")
-  on.exit(terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", old_ext))
+  on.exit(
+    terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", old_ext),
+    add = TRUE
+  )
 
   for (wi in work_items) {
     if (verbose) {

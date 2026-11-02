@@ -35,7 +35,10 @@
   # .aux.xml holds the ASC class names
   old_ext <- terra::getGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS")
   terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", ".tif,.vrt,.aux.xml")
-  on.exit(terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", old_ext))
+  on.exit(
+    terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", old_ext),
+    add = TRUE
+  )
 
   return(tryCatch(
     terra::rast(full_url, opts = opts),
