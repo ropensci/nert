@@ -6,7 +6,11 @@ Accepted by rOpenSci!
 
 - Reexport [terra::plot()] along with `activeCat`, `categories` and `cats` for working with raster data from TERN.
 - Update all URLs to point to rOpenSci.
-- 
+
+## Minor changes
+
+- Use Markdown syntax in Roxygen code.
+- Use `@inhertis` to deduplicate Roxygen code.
 
 # nert 2.0.0
 
