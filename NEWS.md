@@ -10,7 +10,7 @@ Accepted by rOpenSci!
 ## Minor changes
 
 - Use Markdown syntax in Roxygen code.
-- Use `@inhertis` to deduplicate Roxygen code.
+- Use `@inherits` to deduplicate Roxygen code.
 
 # nert 2.0.0
 
