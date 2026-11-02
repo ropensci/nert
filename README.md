@@ -5,7 +5,7 @@
 # nert <img src="man/figures/logo.png" style="float:right;" alt="logo" width="120" />
 
 <!-- badges: start -->
-[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![R-CMD-check](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml) [![codecov](https://codecov.io/gh/ropensci/nert/graph/badge.svg?token=WgBeTrqQnQ)](https://app.codecov.io/gh/ropensci/nert) [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/785_status.svg)](https://github.com/ropensci/software-review/issues/785) <!-- badges: end -->
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![R-CMD-check](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml) [![codecov](https://codecov.io/gh/ropensci/nert/graph/badge.svg?token=uynDVNOXg7)](https://codecov.io/gh/ropensci/nert) [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/785_status.svg)](https://github.com/ropensci/software-review/issues/785) <!-- badges: end -->
 
 The {nert} package streamlines access to various Cloud-Optimised GeoTIFF (COG) datasets provided by the Australian Terrestrial Ecosystem Research Network (TERN), allowing you to easily incorporate these environmental datasets into your R analytics.
 Currently supported datasets in the {nert} package include:
@@ -94,16 +94,20 @@ Note that since these are cloud-optimised COGs, they employ Just-In-Time data st
 
 ``` r
 library(nert)
+library(terra)
+#> terra 1.9.50
+#> 
+#> Attaching package: 'terra'
+#> The following object is masked from 'package:knitr':
+#> 
+#>     spin
 
 r <- read_smips(date = "2024-01-01")
-#> Warning: nert has set the GDAL option `GDAL_HTTP_USERPWD` to your TERN API key for the rest of this
-#> R session.
-#> ℹ GDAL sends the key with every `/vsicurl` request in this session, including requests to
-#>   servers other than TERN.
-#> ℹ Restart R to clear it.
 extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))
-#> Error in `extract()`:
-#> ! could not find function "extract"
+#> # Data frame like object (class data.frame) 4 x 1:
+#>  │ID   │smips_totalbucket_mm_20240101│x    │y    
+#>  │<dbl>│<dbl>                        │<dbl>│<dbl>
+#> 1│    1│                           46│  139│  -35
 ```
 
 Plot the Australia-wide rasters with `plot()`, the `plot()` from {terra} is re-exported by this package, so there is no need to load that package as well, just having {nert} loaded is enough.
@@ -208,6 +212,6 @@ citation("nert")
 #>     author = {Adam H. Sparks and Wasin Pipattungsakul and Russell Edson and Sam Rogers and Max Moldovan},
 #>     year = {2026},
 #>     note = {R package version 2.0.1},
-#>     url = {https://docs.ropensci.org/nert/},
+#>     url = {https://docs.ropensci.org/nert},
 #>   }
 ```
