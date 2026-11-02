@@ -8,7 +8,7 @@
 #' imagery.
 #'
 #' @section Phenology metrics:
-#' Eleven phenological metrics are available via the \code{collection}
+#' Eleven phenological metrics are available via the `collection`
 #' argument:
 #' \describe{
 #'   \item{\code{"SGS"}}{**Start of Growing Season** (default). A number
@@ -50,19 +50,19 @@
 #' }
 #'
 #' @param year An integer year (2003--2018).
-#' @param season Season number: \code{1} (default) or \code{2}.
+#' @param season Season number: `1` (default) or `2`.
 #' @param collection Phenology metric abbreviation.  One of \code{"SGS"}
 #'   (default), \code{"PGS"}, \code{"EGS"}, \code{"LGS"}, \code{"EVI1"},
 #'   \code{"EVI2"}, \code{"EVIP"}, \code{"EVII"}, \code{"SGS_month"},
 #'   \code{"PGS_month"} or \code{"EGS_month"}.
-#' @param api_key A \code{character} string containing your \acronym{TERN}
+#' @param api_key A `character` string containing your \acronym{TERN}
 #'   \acronym{API} key. See [get_key()] for setup.
 #' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=\code{NULL}, in which case the maximum retry number is
+#'   raised. Default=`NULL`, in which case the maximum retry number is
 #'   resolved from the option \code{nert.max_tries} if that option exists.
 #'   (Defaults to 3 retries if \code{nert.max_tries} has not been set.)
 #' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=\code{NULL}, in which case the
+#'   roughly double the one before. Default=`NULL`, in which case the
 #'   initial delay is resolved from the option \code{nert.initial_delay} if that
 #'   option exists. (Defaults to a 1 second initial delay if
 #'   \code{nert.initial_delay} has not been set.)
@@ -117,7 +117,7 @@ read_phenology <- function(
 #' Named list mapping metric abbreviations to their subdirectory names on
 #' the TERN data server.
 #'
-#' @format A named \code{list} of \code{character} strings.
+#' @format A named `list` of `character` strings.
 #'
 #' @dev
 .phenology_metrics <- list(
@@ -137,12 +137,12 @@ read_phenology <- function(
 
 #' Validate phenology arguments before the API key is checked
 #'
-#' Phenology requires an integer \code{year} in 2003--2018. The \code{season}
-#' and \code{collection} arguments are optional and validated downstream in the
+#' Phenology requires an integer `year` in 2003--2018. The `season`
+#' and `collection` arguments are optional and validated downstream in the
 #' handler. Invoked by [read_tern()] via the [.tern_datasets] registry.
 #'
 #' @param dots Named list of \code{...} args from [read_tern()].
-#' @param dataset_id Raw \code{dataset_id} (unused; uniform validator signature).
+#' @param dataset_id Raw `dataset_id` (unused; uniform validator signature).
 #' @returns `NULL`; called for its side effects (argument validation).
 #'
 #' @dev

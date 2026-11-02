@@ -37,14 +37,14 @@
 #'   \code{"05"} (lower, 5th-percentile bound) or \code{"95"} (upper,
 #'   95th-percentile bound). The 05 and 95 layers together span a 90%
 #'   interval.
-#' @param api_key A \code{character} string containing your \acronym{TERN}
+#' @param api_key A `character` string containing your \acronym{TERN}
 #'   \acronym{API} key. See [get_key()] for setup.
 #' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=\code{NULL}, in which case the maximum retry number is
+#'   raised. Default=`NULL`, in which case the maximum retry number is
 #'   resolved from the option \code{nert.max_tries} if that option exists.
 #'   (Defaults to 3 retries if \code{nert.max_tries} has not been set.)
 #' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=\code{NULL}, in which case the
+#'   roughly double the one before. Default=`NULL`, in which case the
 #'   initial delay is resolved from the option \code{nert.initial_delay} if that
 #'   option exists. (Defaults to a 1 second initial delay if
 #'   \code{nert.initial_delay} has not been set.)
@@ -220,7 +220,7 @@ read_slga <- function(
 #' parameters: directory name, file prefix, version, release date, and
 #' filename suffix.
 #'
-#' @format A named \code{list} of \code{list}s.
+#' @format A named `list` of `list`s.
 #'
 #' @dev
 .slga_config <- list(

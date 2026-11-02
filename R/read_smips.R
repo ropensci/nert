@@ -33,14 +33,14 @@
 #'       An estimate of the moisture lost from the top 0-10cm bucket due to
 #'       runoff or overtopping.}
 #'   }
-#' @param api_key A \code{character} string containing your \acronym{TERN}
+#' @param api_key A `character` string containing your \acronym{TERN}
 #'   \acronym{API} key.  See [get_key()] for setup.
 #' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=\code{NULL}, in which case the maximum retry number is
+#'   raised. Default=`NULL`, in which case the maximum retry number is
 #'   resolved from the option \code{nert.max_tries} if that option exists.
 #'   (Defaults to 3 retries if \code{nert.max_tries} has not been set.)
 #' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=\code{NULL}, in which case the
+#'   roughly double the one before. Default=`NULL`, in which case the
 #'   initial delay is resolved from the option \code{nert.initial_delay} if that
 #'   option exists. (Defaults to a 1 second initial delay if
 #'   \code{nert.initial_delay} has not been set.)
@@ -102,11 +102,11 @@ read_smips <- function(
 
 #' Validate SMIPS arguments before the API key is checked
 #'
-#' SMIPS requires a daily \code{date} (the legacy \code{day} name is also
+#' SMIPS requires a daily `date` (the legacy `day` name is also
 #' accepted). Invoked by [read_tern()] via the [.tern_datasets] registry.
 #'
 #' @param dots Named list of \code{...} args from [read_tern()].
-#' @param dataset_id Raw \code{dataset_id} (unused; uniform validator signature).
+#' @param dataset_id Raw `dataset_id` (unused; uniform validator signature).
 #' @returns `NULL`; called for its side effects (argument validation).
 #'
 #' @dev
