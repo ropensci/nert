@@ -45,13 +45,13 @@
     error = function(e) {
       msg <- "Could not read the file from TERN."
       if (max_tries > 1L) {
-        msg <- c(
+        msg2 <- c(
           msg,
           "i" = "Busy and server-error responses were retried up to
             {max_tries - 1L} time{?s}."
         )
       }
-      cli::cli_abort(msg)
+      cli::cli_abort(msg2)
     }
   ))
 }
