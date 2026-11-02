@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.6.1 (2026-06-24)",
+  "runtimePlatform": "R version 4.6.2 (2026-10-29)",
   "author": [
     {
       "@type": "Person",
@@ -257,7 +257,7 @@
   "applicationCategory": "Tools",
   "isPartOf": "https://grdc.com.au/research/partnerships-and-initiatives/strategic-partnerships/aagi",
   "keywords": ["TERN", "Australia", "soil-data", "soil-moisture", "evapotranspiration", "vegetation", "phenology", "raster", "geospatial", "cloud-optimised-geotiff", "gdal", "terra", "data-access", "ropensci", "agricultural-data", "agriculture", "australia", "australian-data", "data-retrieval", "ecological", "ecological-data"],
-  "fileSize": "1955.223KB",
+  "fileSize": "1955.525KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -296,7 +296,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/nert/blob/main/NEWS.md",
   "readme": "https://github.com/ropensci/nert/blob/main/README.md",
-  "contIntegration": ["https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/ropensci/nert"],
+  "contIntegration": ["https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml", "https://codecov.io/gh/ropensci/nert"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "review": {
     "@type": "Review",

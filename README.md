@@ -5,7 +5,7 @@
 # nert <img src="man/figures/logo.png" style="float:right;" alt="logo" width="120" />
 
 <!-- badges: start -->
-[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![R-CMD-check](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml) [![codecov](https://codecov.io/gh/ropensci/nert/graph/badge.svg?token=WgBeTrqQnQ)](https://app.codecov.io/gh/ropensci/nert) [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/785_status.svg)](https://github.com/ropensci/software-review/issues/785) <!-- badges: end -->
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![R-CMD-check](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/nert/actions/workflows/R-CMD-check.yaml) [![codecov](https://codecov.io/gh/ropensci/nert/graph/badge.svg?token=uynDVNOXg7)](https://codecov.io/gh/ropensci/nert) [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/785_status.svg)](https://github.com/ropensci/software-review/issues/785) <!-- badges: end -->
 
 The {nert} package streamlines access to various Cloud-Optimised GeoTIFF (COG) datasets provided by the Australian Terrestrial Ecosystem Research Network (TERN), allowing you to easily incorporate these environmental datasets into your R analytics.
 Currently supported datasets in the {nert} package include:
@@ -94,6 +94,17 @@ Note that since these are cloud-optimised COGs, they employ Just-In-Time data st
 
 ``` r
 library(nert)
+#> Registered S3 method overwritten by 'data.table':
+#>   method           from   
+#>   print.data.table colorDF
+#> 
+#> Attaching package: 'nert'
+#> The following object is masked from 'package:graphics':
+#> 
+#>     plot
+#> The following objects are masked from 'package:base':
+#> 
+#>     levels, plot
 
 r <- read_smips(date = "2024-01-01")
 #> Warning: nert has set the GDAL option `GDAL_HTTP_USERPWD` to your TERN API key for the rest of this
@@ -208,6 +219,6 @@ citation("nert")
 #>     author = {Adam H. Sparks and Wasin Pipattungsakul and Russell Edson and Sam Rogers and Max Moldovan},
 #>     year = {2026},
 #>     note = {R package version 2.0.1},
-#>     url = {https://docs.ropensci.org/nert/},
+#>     url = {https://docs.ropensci.org/nert},
 #>   }
 ```
