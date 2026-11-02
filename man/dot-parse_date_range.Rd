@@ -7,8 +7,11 @@
 .parse_date_range(date_range)
 }
 \arguments{
-\item{date_range}{A \code{Date} vector or \code{character} vector containing the
-date range supplied by the user.}
+\item{date_range}{A \code{Date} vector or \code{character} vector of length 2,
+\verb{[start_date, end_date]}, indicating the start and end date which
+should be used for the TERN dataset retrieval. (If a vector of length
+greater than 2 is given, this parameter works exactly as \code{dates} does.)
+Omit if specifying exact dates via the \code{dates} argument instead.}
 }
 \value{
 A \code{Date} vector.

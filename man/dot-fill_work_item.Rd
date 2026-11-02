@@ -17,11 +17,19 @@
 
 \item{n_loc}{Number of locations.}
 
-\item{api_key}{TERN API key.}
+\item{api_key}{A \code{character} string containing your \acronym{TERN}
+\acronym{API} key.  See \code{\link[=get_key]{get_key()}} for setup.}
 
-\item{max_tries}{Total number of download retries.}
+\item{max_tries}{Maximum number of download retries before an error is
+raised. Default=\code{NULL}, in which case the maximum retry number is
+resolved from the option \code{nert.max_tries} if that option exists.
+(Defaults to 3 retries if \code{nert.max_tries} has not been set.)}
 
-\item{initial_delay}{Initial retry delay (in seconds).}
+\item{initial_delay}{Initial retry delay in seconds. Each later delay is
+roughly double the one before. Default=\code{NULL}, in which case the initial
+delay is resolved from the option \code{nert.initial_delay} if that option
+exists. (Defaults to a 1 second initial delay if \code{nert.initial_delay} has
+not been set.)}
 }
 \value{
 \code{invisible(NULL)}. This function is called for its side effects.

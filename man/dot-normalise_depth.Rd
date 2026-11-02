@@ -7,7 +7,12 @@
 .normalise_depth(depth)
 }
 \arguments{
-\item{depth}{User-supplied soil depths (or \code{NULL}/\code{"all"}).}
+\item{depth}{\emph{For SLGA datasets.} A \code{character} vector containing the
+depth interval(s) for the SLGA soil attributes to collect.
+(Default=All depths.) Options: \code{"000_005"}, \code{"005_015"}, \code{"015_030"},
+\code{"030_060"}, \code{"060_100"}, \code{"100_200"}. Use \code{NULL} (default) or \code{"all"}
+to specify retrieval of all available depths. This parameter is ignored
+for non-SLGA datasets.}
 }
 \value{
 A \code{character} vector of valid soil depths (de-duplicated,

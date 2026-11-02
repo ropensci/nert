@@ -7,8 +7,11 @@
 .normalise_canopy_collection(canopy_collection)
 }
 \arguments{
-\item{canopy_collection}{User-supplied vector of CANOPY datasets to
-collect (or \code{NULL}/\code{"all"}).}
+\item{canopy_collection}{\emph{For CANOPY datasets.} A \code{character} vector
+specifying the OzTreeMap canopy height composite(s) to be retrieved.
+(Default=All CANOPY datasets.) Options: \code{"best_pick"}, \code{"median"}. Use
+\code{NULL} (default) or \code{"all"} to specify retrieval of all CANOPY datasets.
+This parameter is ignored for non-CANOPY datasets.}
 }
 \value{
 A \code{character} vector of valid CANOPY datasets (de-duplicated,

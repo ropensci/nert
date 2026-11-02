@@ -133,23 +133,8 @@ depth layers and three statistics:
 95th-percentile bound). The \code{05} and \code{95} layers together span a
 90\% interval, per the SLGA product definition.}
 }
-Supported attributes (use as the \code{dataset_id} alias):
-\describe{
-\item{\code{"AWC"}}{Available Water Capacity (percent)}
-\item{\code{"CLY"}}{Clay content (percent)}
-\item{\code{"SND"}}{Sand content (percent)}
-\item{\code{"SLT"}}{Silt content (percent)}
-\item{\code{"BDW"}}{Bulk Density whole earth (g/cm3)}
-\item{\code{"PHC"}}{pH (CaCl2)}
-\item{\code{"PHW"}}{pH (water)}
-\item{\code{"NTO"}}{Total Nitrogen (percent)}
-\item{\code{"AVP"}}{Available Phosphorus (mg/kg)}
-\item{\code{"PTO"}}{Total Phosphorus (percent)}
-\item{\code{"CEC"}}{Cation Exchange Capacity (meq/100g)}
-\item{\code{"ECE"}}{Effective Cation Exchange Capacity (meq/100g)}
-\item{\code{"DUL"}}{Drained Upper Limit volumetric water content (percent)}
-\item{\code{"L15"}}{15 Bar Lower Limit volumetric water content (percent)}
-}
+The supported attributes (used as the \code{dataset_id} alias) are listed in the
+\strong{Supported soil attributes} section below.
 }
 
 \section{Soil Beta Diversity (\code{"SOILDIV"})}{
@@ -175,15 +160,9 @@ Supported attributes (use as the \code{dataset_id} alias):
 \describe{
 \item{\code{year}}{Required. An integer year (2003--2018).}
 \item{\code{season}}{Season number: \code{1} (default) or \code{2}.}
-\item{\code{collection}}{Phenology metric — one of \code{"SGS"}
-(Start of Growing Season, default), \code{"PGS"} (Peak of Growing Season),
-\code{"EGS"} (End of Growing Season), \code{"LGS"} (Length of Growing Season),
-\code{"EVI1"} (Minimum EVI before peak), \code{"EVI2"} (Minimum EVI after peak),
-\code{"EVIP"} (EVI at Peak of Growing Season),
-\code{"EVII"} (Integral of EVI under growing season curve),
-\code{"SGS_month"} (Start of Growing Season, monthly resolution),
-\code{"PGS_month"} (Peak of the Growing Season, monthly resolution),
-\code{"EGS_month"} (End of Growing Season, monthly resolution).}
+\item{\code{collection}}{Phenology metric, with \code{"SGS"} (Start of Growing
+Season) as the default. See the \strong{Phenology metrics} section
+below for the eleven available metrics.}
 }
 }
 
@@ -216,6 +195,70 @@ Per-call values supplied via the \code{max_tries} or
 \code{initial_delay} arguments always override the option.  Example:
 \preformatted{
   options(nert.max_tries = 5L, nert.initial_delay = 2L)
+}
+}
+
+\section{Supported soil attributes}{
+
+\describe{
+\item{\code{"AWC"}}{Available Water Capacity (\%)}
+\item{\code{"CLY"}}{Clay content (\%)}
+\item{\code{"SND"}}{Sand content (\%)}
+\item{\code{"SLT"}}{Silt content (\%)}
+\item{\code{"BDW"}}{Bulk Density (Whole Earth) (g/cm3)}
+\item{\code{"PHC"}}{pH (of 1:5 soil/0.01M CaCl2 extract)}
+\item{\code{"PHW"}}{pH (of 1:5 soil water solution)}
+\item{\code{"NTO"}}{Total Nitrogen (\%)}
+\item{\code{"AVP"}}{Available soil Phosphorus (mg/kg)}
+\item{\code{"PTO"}}{Total soil Phosphorus (\%)}
+\item{\code{"CEC"}}{Cation Exchange Capacity (meq/100g)}
+\item{\code{"ECE"}}{Effective Cation Exchange Capacity (meq/100g)}
+\item{\code{"DUL"}}{Drained Upper Limit volumetric water content (\%)}
+\item{\code{"L15"}}{15 Bar Lower Limit volumetric water content (\%)}
+}
+}
+
+\section{Phenology metrics}{
+
+Eleven phenological metrics are available via the \code{collection}
+argument:
+\describe{
+\item{\code{"SGS"}}{\strong{Start of Growing Season} (default). A number
+between -150 and 345 indicating the start of the growing season (with
+negative numbers meaning the prior year).}
+\item{\code{"PGS"}}{\strong{Peak of Growing Season}. A number between 9 and
+361 indicating the day of the year for the peak of the growing season.}
+\item{\code{"EGS"}}{\strong{End of Growing Season}. A number between 25 and
+519 indicating the day of the year that marks the end of the growing
+season, with numbers above 365 (or 366 for leap years) meaning the
+following year.}
+\item{\code{"LGS"}}{\strong{Length of Growing Season}, measured in days.}
+\item{\code{"EVI1"}}{\strong{Minimum of EVI before peak}. A unitless index
+between 0 and 10000 (i.e., scaled by 10000) for the minimum
+value of the Enhanced Vegetation Index \emph{before} the peak of the growing
+season.}
+\item{\code{"EVI2"}}{\strong{Minimum of EVI after peak}. A unitless index
+between 0 and 10000 (i.e., scaled by 10000) for the minimum
+value of the Enhanced Vegetation Index \emph{after} the peak of the growing
+season.}
+\item{\code{"EVIP"}}{\strong{Peak EVI}. A unitless index between 0 and 10000
+(i.e., scaled by 10000) for the value of the Enhanced Vegetation Index
+\emph{at} the peak of the growing season.}
+\item{\code{"EVII"}}{\strong{Integral of the EVI across the season}. The
+calculated integral of the Enhanced Vegetation Index (including the
+factor of 10000 scaling) under the growing season cycle curve.}
+\item{\code{"SGS_month"}}{\strong{Start of the growing season by month}.
+A number between 1 and 12, indicating the month for the start of the
+growing season (i.e., the \code{"SGS"} metric but reprocessed to
+monthly time resolution).}
+\item{\code{"PGS_month"}}{\strong{Peak of the growing season by month}.
+A number between 1 and 12, indicating the month for the peak of the
+growing season (i.e., the \code{"PGS"} metric but reprocessed to
+monthly time resolution).}
+\item{\code{"EGS_month"}}{\strong{End of the growing season by month}.
+A number between 1 and 12, indicating the month for the end of the
+growing season (i.e., the \code{"EGS"} metric but reprocessed to
+monthly time resolution).}
 }
 }
 

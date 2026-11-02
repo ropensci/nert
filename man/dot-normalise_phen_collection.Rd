@@ -7,8 +7,12 @@
 .normalise_phen_collection(phenology_collection)
 }
 \arguments{
-\item{phenology_collection}{User-supplied vector of PHENOLOGY datasets
-to collect (or \code{NULL}/\code{"all"}).}
+\item{phenology_collection}{\emph{For PHENOLOGY datasets.} A \code{character} vector
+specifying the phenology datasets to be retrieved. (Default=All
+PHENOLOGY datasets.) Options: \code{"SGS"}, \code{"PGS"}, \code{"EGS"}, \code{"LGS"},
+\code{"EVI1"}, \code{"EVI2"}, \code{"EVIP"}, \code{"EVII"}, \code{"SGS_month"}, \code{"PGS_month"},
+\code{"EGS_month"}. Use \code{NULL} (default) or \code{"all"} to specify retrieval of
+all PHENOLOGY datasets.}
 }
 \value{
 A \code{character} vector of valid PHENOLOGY datasets (de-duplicated,

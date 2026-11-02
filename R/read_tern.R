@@ -83,23 +83,8 @@
 #'     95th-percentile bound). The `05` and `95` layers together span a
 #'     90% interval, per the SLGA product definition.}
 #' }
-#' Supported attributes (use as the `dataset_id` alias):
-#' \describe{
-#'   \item{`"AWC"`}{Available Water Capacity (percent)}
-#'   \item{`"CLY"`}{Clay content (percent)}
-#'   \item{`"SND"`}{Sand content (percent)}
-#'   \item{`"SLT"`}{Silt content (percent)}
-#'   \item{`"BDW"`}{Bulk Density whole earth (g/cm3)}
-#'   \item{`"PHC"`}{pH (CaCl2)}
-#'   \item{`"PHW"`}{pH (water)}
-#'   \item{`"NTO"`}{Total Nitrogen (percent)}
-#'   \item{`"AVP"`}{Available Phosphorus (mg/kg)}
-#'   \item{`"PTO"`}{Total Phosphorus (percent)}
-#'   \item{`"CEC"`}{Cation Exchange Capacity (meq/100g)}
-#'   \item{`"ECE"`}{Effective Cation Exchange Capacity (meq/100g)}
-#'   \item{`"DUL"`}{Drained Upper Limit volumetric water content (percent)}
-#'   \item{`"L15"`}{15 Bar Lower Limit volumetric water content (percent)}
-#' }
+#' The supported attributes (used as the `dataset_id` alias) are listed in the
+#' \strong{Supported soil attributes} section below.
 #'
 #' @section Soil Beta Diversity (`"SOILDIV"`):
 #' \describe{
@@ -119,16 +104,13 @@
 #' \describe{
 #'   \item{`year`}{Required. An integer year (2003--2018).}
 #'   \item{`season`}{Season number: `1` (default) or `2`.}
-#'   \item{`collection`}{Phenology metric — one of `"SGS"`
-#'     (Start of Growing Season, default), `"PGS"` (Peak of Growing Season),
-#'     `"EGS"` (End of Growing Season), `"LGS"` (Length of Growing Season),
-#'     `"EVI1"` (Minimum EVI before peak), `"EVI2"` (Minimum EVI after peak),
-#'     `"EVIP"` (EVI at Peak of Growing Season),
-#'     `"EVII"` (Integral of EVI under growing season curve),
-#'     `"SGS_month"` (Start of Growing Season, monthly resolution),
-#'     `"PGS_month"` (Peak of the Growing Season, monthly resolution),
-#'     `"EGS_month"` (End of Growing Season, monthly resolution).}
+#'   \item{`collection`}{Phenology metric, with `"SGS"` (Start of Growing
+#'     Season) as the default. See the \strong{Phenology metrics} section
+#'     below for the eleven available metrics.}
 #' }
+#'
+#' @inheritSection read_slga Supported soil attributes
+#' @inheritSection read_phenology Phenology metrics
 #'
 #' @section Datasets not accessible:
 #' The following datasets are tracked in the \acronym{TERN} catalogue but

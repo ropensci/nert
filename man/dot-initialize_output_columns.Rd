@@ -12,7 +12,7 @@
 \item{work_items}{A list of work items from \code{\link[=.build_work_items]{.build_work_items()}}.}
 }
 \value{
-\code{invisible(NULL)}. Called for its side effects.
+\code{invisible(NULL)}. This function is called for its side effects.
 }
 \description{
 Adds one \code{NA}-filled column per work item to the output \code{data.table},

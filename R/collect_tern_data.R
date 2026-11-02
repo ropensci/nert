@@ -72,17 +72,7 @@
 #'   (Default=All CANOPY datasets.) Options: `"best_pick"`, `"median"`. Use
 #'   `NULL` (default) or `"all"` to specify retrieval of all CANOPY datasets.
 #'   This parameter is ignored for non-CANOPY datasets.
-#' @param api_key A `character` string containing your \acronym{TERN}
-#'   \acronym{API} key.  See [get_key()] for setup.
-#' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=`NULL`, in which case the maximum retry number is
-#'   resolved from the option `nert.max_tries` if that option exists.
-#'   (Defaults to 3 retries if `nert.max_tries` has not been set.)
-#' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=`NULL`, in which case the initial
-#'   delay is resolved from the option `nert.initial_delay` if that option
-#'   exists. (Defaults to a 1 second initial delay if `nert.initial_delay` has
-#'   not been set.)
+#' @inheritParams read_tern
 #' @param verbose Logical.  If `TRUE`, print progress messages. (Default=TRUE.)
 #' @param na.rm Logical.  If `TRUE`, drop rows where all dataset columns
 #'   are `NA`. (Default=FALSE).
@@ -263,11 +253,7 @@ collect_tern_data <- function(
 #' Validates and resolves the `dates`/`date_range` arguments and parses the
 #' coordinate inputs into a `SpatVector` of points.
 #'
-#' @param dates User-supplied exact dates (or missing).
-#' @param date_range User-supplied date range (or missing).
-#' @param lon Longitude(s).
-#' @param lat Latitude(s).
-#' @param xy Optional data.frame/matrix with coordinate columns.
+#' @inheritParams collect_tern_data
 #' @returns A named list with elements `dates`, `n_dt`, `coords_df`, `n_loc`,
 #'   and `pts`.
 #'
@@ -311,9 +297,9 @@ collect_tern_data <- function(
 #' using the correct storage type (`NA_character_` or `NA_real_`) for each.
 #' The table is modified in place.
 #'
-#' @param out The output `data.table` (modified in place).
+#' @inheritParams .fill_work_item
 #' @param work_items A list of work items from [.build_work_items()].
-#' @returns `invisible(NULL)`. Called for its side effects.
+#' @inherit .fill_work_item return
 #'
 #' @dev
 .initialize_output_columns <- function(out, work_items) {
@@ -340,7 +326,7 @@ collect_tern_data <- function(
 #' @param out A `data.table` containing the collected data.
 #' @param data_cols A `character` vector of column names to check (excludes
 #'   `date`, `lon`, `lat`).
-#' @param na.rm Logical. If `TRUE`, drop all-NA rows.
+#' @inheritParams collect_tern_data
 #' @returns A (possibly filtered) `data.table`.
 #'
 #' @dev
@@ -355,9 +341,7 @@ collect_tern_data <- function(
 
 #' Normalise coordinate input
 #'
-#' @param lon Longitude(s).
-#' @param lat Latitude(s).
-#' @param xy Optional data.frame/matrix with lon/lat or x/y columns.
+#' @inheritParams collect_tern_data
 #' @returns A 2-column `data.table` with columns `lon`, `lat`.
 #'
 #' @dev
@@ -422,8 +406,7 @@ collect_tern_data <- function(
 #' into a contiguous range of dates. If a vector of length greater than 2
 #' is given, this function does nothing (besides the date conversion).
 #'
-#' @param date_range A `Date` vector or `character` vector containing the
-#'   date range supplied by the user.
+#' @inheritParams collect_tern_data
 #' @returns A `Date` vector.
 #'
 #' @dev
@@ -462,9 +445,9 @@ collect_tern_data <- function(
 #' @param vec A `character` vector (of user-supplied elements, e.g., dataset
 #'   names, variants), or `NULL`/`"all"`.
 #' @param valid_elements A `character` vector containing the valid
-#'   elements against which the `given_vec` vector should be compared.
+#'   elements against which the `vec` vector should be compared.
 #' @param info A `character` string that describes the elements
-#'   in `given_vec` (so that errors/warnings are more informative).
+#'   in `vec` (so that errors/warnings are more informative).
 #' @returns A `character` vector of valid elements (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -497,7 +480,7 @@ collect_tern_data <- function(
 
 #' Resolve the `datasets` argument to a clean alias vector
 #'
-#' @param datasets User-supplied aliases (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of recognised aliases (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -531,7 +514,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'depth' argument to a clean vector
 #'
-#' @param depth User-supplied soil depths (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid soil depths (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -551,7 +534,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'stat' argument to a clean vector
 #'
-#' @param stat User-supplied statistics for SLGA datasets (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid statistics (de-duplicated, order
 #'   preserved).
 #' @dev
@@ -564,8 +547,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'smips_collection' argument to a clean vector
 #'
-#' @param smips_collection User-supplied vector of SMIPS datasets to
-#'   collect (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid SMIPS datasets (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -585,8 +567,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'asc_collection' argument to a clean vector
 #'
-#' @param asc_collection User-supplied vector of ASC datasets to collect
-#'   (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid ASC datasets (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -599,8 +580,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'aet_collection' argument to a clean vector
 #'
-#' @param aet_collection User-supplied vector of AET datasets to
-#'   collect (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid AET datasets (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -613,8 +593,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'soildiv_collection' argument to a clean vector
 #'
-#' @param soildiv_collection User-supplied vector of SOILDIV datasets
-#'   to collect (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid SOILDIV datasets (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -634,8 +613,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'phenology_collection' argument to a clean vector
 #'
-#' @param phenology_collection User-supplied vector of PHENOLOGY datasets
-#'   to collect (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid PHENOLOGY datasets (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -662,8 +640,7 @@ collect_tern_data <- function(
 
 #' Resolve the 'canopy_collection' argument to a clean vector
 #'
-#' @param canopy_collection User-supplied vector of CANOPY datasets to
-#'   collect (or `NULL`/`"all"`).
+#' @inheritParams collect_tern_data
 #' @returns A `character` vector of valid CANOPY datasets (de-duplicated,
 #'   order preserved).
 #' @dev
@@ -691,16 +668,7 @@ collect_tern_data <- function(
 #' `date_idx` is therefore an `integer` vector of positions into `dates`, and
 #' `NA_integer_` marks an item whose single value applies to every date.
 #'
-#' @param datasets Normalised alias vector.
-#' @param dates Resolved `Date` vector.
-#' @param depth SLGA depth selector.
-#' @param stat SLGA stat selector.
-#' @param smips_collection SMIPS collection selector.
-#' @param asc_collection ASC collection selector.
-#' @param aet_collection AET collection selector.
-#' @param soildiv_collection SOILDIV collection selector.
-#' @param phenology_collection PHENOLOGY collection selector.
-#' @param canopy_collection CANOPY collection selector.
+#' @inheritParams collect_tern_data
 #' @returns A list of work-item lists.
 #'
 #' @dev
@@ -867,9 +835,7 @@ collect_tern_data <- function(
 #' @param pts A `SpatVector` of points.
 #' @param n_dt Number of dates.
 #' @param n_loc Number of locations.
-#' @param api_key TERN API key.
-#' @param max_tries Total number of download retries.
-#' @param initial_delay Initial retry delay (in seconds).
+#' @inheritParams read_tern
 #' @returns `invisible(NULL)`. This function is called for its side effects.
 #' @dev
 .fill_work_item <- function(
@@ -954,16 +920,8 @@ collect_tern_data <- function(
 
 #' Print the user-facing datasets-table summarising what will be fetched.
 #'
-#' @param datasets Normalised alias vector.
-#' @param depth Normalised SLGA depth selector.
-#' @param stat Normalised SLGA statistic selector.
-#' @param smips_collection Normalised SMIPS collection selector.
-#' @param asc_collection Normalised ASC collection selector.
-#' @param aet_collection Normalised AET collection selector.
-#' @param soildiv_collection Normalised SOILDIV collection selector.
-#' @param phenology_collection Normalised PHENOLOGY collection selector.
-#' @param canopy_collection Normalised CANOPY collection selector.
-#' @returns `invisible(NULL)`. This function is called for its side effects.
+#' @inheritParams collect_tern_data
+#' @inherit .fill_work_item return
 #' @dev
 .print_datasets_table <- function(
   datasets,

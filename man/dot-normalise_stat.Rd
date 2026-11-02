@@ -7,7 +7,13 @@
 .normalise_stat(stat)
 }
 \arguments{
-\item{stat}{User-supplied statistics for SLGA datasets (or \code{NULL}/\code{"all"}).}
+\item{stat}{\emph{For SLGA datasets.} A \code{character} vector containing the
+statistic to retrieve for the SLGA datasets. (Default=All statistics.)
+Options: \code{"EV"} (estimated value), \code{"05"} (lower, 5th-percentile
+bound), \code{"95"} (upper, 95th-percentile bound); the \code{05} and \code{95}
+layers together span a 90\% interval. Use \code{NULL} (default) or \code{"all"} to
+specify retrieval of all statistics. This parameter is ignored for non-SLGA
+datasets.}
 }
 \value{
 A \code{character} vector of valid statistics (de-duplicated, order

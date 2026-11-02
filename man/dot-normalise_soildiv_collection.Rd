@@ -7,8 +7,12 @@
 .normalise_soildiv_collection(soildiv_collection)
 }
 \arguments{
-\item{soildiv_collection}{User-supplied vector of SOILDIV datasets
-to collect (or \code{NULL}/\code{"all"}).}
+\item{soildiv_collection}{\emph{For SOILDIV datasets.} A \code{character} vector
+specifying the beta soil diversity NMDS axes to be retrieved.
+(Default=All axes/datasets.) Options: \code{"Bacteria_NMDS1"},
+\code{"Bacteria_NMDS2"}, \code{"Bacteria_NMDS3"}, \code{"Fungi_NMDS1"}, \code{"Fungi_NMDS2"},
+\code{"Fungi_NMDS3"}. Use \code{NULL} (default) or \code{"all"} to specify retrieval
+of all SOILDIV axes/datasets.}
 }
 \value{
 A \code{character} vector of valid SOILDIV datasets (de-duplicated,

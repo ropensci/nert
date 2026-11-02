@@ -9,17 +9,7 @@
 #'
 #' @param collection The canopy-height composite variant to download:
 #'   `"best_pick"` (default) or `"median"`.
-#' @param api_key A `character` string containing your \acronym{TERN}
-#'   \acronym{API} key.  See [get_key()] for setup.
-#' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=`NULL`, in which case the maximum retry number is
-#'   resolved from the option `nert.max_tries` if that option exists.
-#'   (Defaults to 3 retries if `nert.max_tries` has not been set.)
-#' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=`NULL`, in which case the initial
-#'   delay is resolved from the option `nert.initial_delay` if that option
-#'   exists. (Defaults to a 1 second initial delay if `nert.initial_delay` has
-#'   not been set.)
+#' @inheritParams read_tern
 #'
 #' @returns
 #' A [terra::SpatRaster] object of the requested vegetation canopy height.
@@ -60,10 +50,8 @@ read_canopy_height <- function(
 }
 #' Internal handler for retrieving Canopy Height data
 #'
-#' @param did Normalised 8-char dataset ID (unused; uniform handler signature).
-#' @param dots Named list of `...` args from [read_tern()].
-#' @param api_key TERN API key.
-#' @param max_tries,initial_delay Passed to [.read_cog()].
+#' @inheritParams .read_tern_smips
+#' @inheritParams read_tern
 #' @returns A [terra::SpatRaster] object for the canopy height dataset.
 #'
 #' @dev

@@ -11,10 +11,10 @@
 names, variants), or \code{NULL}/\code{"all"}.}
 
 \item{valid_elements}{A \code{character} vector containing the valid
-elements against which the \code{given_vec} vector should be compared.}
+elements against which the \code{vec} vector should be compared.}
 
 \item{info}{A \code{character} string that describes the elements
-in \code{given_vec} (so that errors/warnings are more informative).}
+in \code{vec} (so that errors/warnings are more informative).}
 }
 \value{
 A \code{character} vector of valid elements (de-duplicated,
