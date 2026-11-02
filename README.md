@@ -95,12 +95,6 @@ Note that since these are cloud-optimised COGs, they employ Just-In-Time data st
 ``` r
 library(nert)
 library(terra)
-#> terra 1.9.50
-#> 
-#> Attaching package: 'terra'
-#> The following object is masked from 'package:knitr':
-#> 
-#>     spin
 
 r <- read_smips(date = "2024-01-01")
 extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))
@@ -202,7 +196,7 @@ citation("nert")
 #> To cite package 'nert' in publications use:
 #> 
 #>   Sparks AH, Pipattungsakul W, Edson R, Rogers S, Moldovan M (2026). nert:
-#>   Curated Access to TERN Environmental Raster Data. R package version 2.0.1.
+#>   Curated Access to TERN Environmental Raster Data. R package version 2.1.1.
 #>   https://docs.ropensci.org/nert
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -211,7 +205,7 @@ citation("nert")
 #>     title = {{nert}: Curated Access to TERN Environmental Raster Data},
 #>     author = {Adam H. Sparks and Wasin Pipattungsakul and Russell Edson and Sam Rogers and Max Moldovan},
 #>     year = {2026},
-#>     note = {R package version 2.0.1},
-#>     url = {https://docs.ropensci.org/nert},
+#>     note = {R package version 2.1.1},
+#>     url = {https://docs.ropensci.org/nert/},
 #>   }
 ```
