@@ -67,5 +67,6 @@ Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd",
 X-schema.org-applicationCategory: Tools
 X-schema.org-isPartOf: 
     https://grdc.com.au/research/partnerships-and-initiatives/strategic-partnerships/aagi
-X-schema.org-keywords: TERN, soil-data, Australia, earth-science,
-    data-access
+X-schema.org-keywords: TERN, Australia, soil-data, soil-moisture,
+    evapotranspiration, vegetation, phenology, raster, geospatial,
+    cloud-optimised-geotiff, gdal, terra, data-access, ropensci
