@@ -46,7 +46,8 @@ data from the \acronym{TERN} Data Portal. This function effectively
 dispatches to dataset-specific handlers based on the dataset requested
 (e.g., SMIPS, SLGA, AET, and so on), and passes any additional arguments
 through \code{...}.  The returned object is a \link[terra:SpatRaster]{terra::SpatRaster} that
-can be plotted, cropped, or extracted with standard \pkg{terra} workflows.
+can be plotted, cropped, or extracted with standard \CRANpkg{terra}
+workflows.
 }
 \section{Dataset aliases}{
 

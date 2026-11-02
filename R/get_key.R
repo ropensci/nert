@@ -1,7 +1,7 @@
 #' Get or Set Up API Key for TERN
 #'
-#' Fetches your \acronym{TERN} \acronym{API} key through \pkg{keyring}.  If no
-#'   key is found, instructions for setting one up are shown and an error is
+#' Fetches your \acronym{TERN} \acronym{API} key through \CRANpkg{keyring}.  If
+#'   no key is found, instructions for setting one up are shown and an error is
 #'   raised.  Can be used to check that the key that \R is using is the key that
 #'   you wish to be using, or for guidance in setting the key up in the first
 #'   place.
@@ -16,7 +16,7 @@
 #'
 #' # Storing your key
 #'
-#' \pkg{nert} reads the key through \pkg{keyring}, a suggested package, so
+#' \pkg{nert} reads the key through \CRANpkg{keyring}, a suggested package, so
 #'   install it first with `install.packages("keyring")`.
 #'
 #' The `"nert"` keyring is read first, where the backend supports named
@@ -99,7 +99,8 @@ get_key <- function() {
 #'
 #' Reports the key or what the store raised when no key is supplied.
 #'
-#' @param backend The \pkg{keyring} backend, from [keyring::default_backend()].
+#' @param backend The \CRANpkg{keyring} backend, from
+#'   [keyring::default_backend()].
 #' @param keyring Name of the keyring to read, or `NULL` for the default store.
 #' @returns A named `list`: `key`, empty when no key was supplied, and `report`,
 #'   what the store raised.

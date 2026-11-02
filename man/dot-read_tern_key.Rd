@@ -7,7 +7,8 @@
 .read_tern_key(backend, keyring)
 }
 \arguments{
-\item{backend}{The \pkg{keyring} backend, from \code{\link[keyring:default_backend]{keyring::default_backend()}}.}
+\item{backend}{The \CRANpkg{keyring} backend, from
+\code{\link[keyring:default_backend]{keyring::default_backend()}}.}
 
 \item{keyring}{Name of the keyring to read, or \code{NULL} for the default store.}
 }
