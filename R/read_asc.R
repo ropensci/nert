@@ -38,6 +38,11 @@
 #' A [terra::SpatRaster] object containing the soil order classes (or the
 #' values of the confusion index).
 #'
+#' @section {terra} re-exports:
+#' To support working with this dataset, [terra::plot], [terra::levels] and
+#' [terra::cats] are re-exported by \pkg{nert}.
+#'
+#'
 #' @seealso
 #' [read_tern()]
 #'
