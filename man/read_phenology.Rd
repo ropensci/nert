@@ -24,7 +24,7 @@ read_phenology(
 \code{"PGS_month"} or \code{"EGS_month"}.}
 
 \item{api_key}{A \code{character} string containing your \acronym{TERN}
-\acronym{API} key. See \code{\link[=get_key]{get_key()}} for setup.}
+\acronym{API} key.  See \code{\link[=get_key]{get_key()}} for setup.}
 
 \item{max_tries}{Maximum number of download retries before an error is
 raised. Default=\code{NULL}, in which case the maximum retry number is
@@ -32,10 +32,10 @@ resolved from the option \code{nert.max_tries} if that option exists.
 (Defaults to 3 retries if \code{nert.max_tries} has not been set.)}
 
 \item{initial_delay}{Initial retry delay in seconds. Each later delay is
-roughly double the one before. Default=\code{NULL}, in which case the
-initial delay is resolved from the option \code{nert.initial_delay} if that
-option exists. (Defaults to a 1 second initial delay if
-\code{nert.initial_delay} has not been set.)}
+roughly double the one before. Default=\code{NULL}, in which case the initial
+delay is resolved from the option \code{nert.initial_delay} if that option
+exists. (Defaults to a 1 second initial delay if \code{nert.initial_delay} has
+not been set.)}
 }
 \value{
 A \link[terra:SpatRaster]{terra::SpatRaster} object of the requested phenology metric.
@@ -96,11 +96,11 @@ monthly time resolution).}
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 # Read Start of Growing Season for 2018, Season 1
 r <- read_phenology(year = 2018)
-terra::plot(r)
+plot(r)
 
 # Read End of Growing Season for 2015, Season 2
 r_egs <- read_phenology(year = 2015, season = 2, collection = "EGS")
-terra::plot(r_egs)
+plot(r_egs)
 \dontshow{\}) # examplesIf}
 }
 \references{

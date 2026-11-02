@@ -9,7 +9,12 @@
 \arguments{
 \item{dots}{Named list of \code{...} args from \code{\link[=read_tern]{read_tern()}}.}
 
-\item{dataset_id}{Raw \code{dataset_id} (unused; uniform validator signature).}
+\item{dataset_id}{A \code{character} string identifying the dataset.
+Accepts a short alias, the full \acronym{TERN} portal key (e.g.\
+\code{"TERN/d1995ee8-53f0-4a7d-91c2-ad5e4a23e5e0"}), or the
+8-character key prefix (e.g.\ \code{"TERN/d1995ee8"}).  See the
+\strong{Dataset aliases} section for the complete table of supported
+aliases.}
 }
 \value{
 \code{NULL}; called for its side effects (argument validation).

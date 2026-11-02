@@ -27,7 +27,7 @@ uncertain.)}
 }}
 
 \item{api_key}{A \code{character} string containing your \acronym{TERN}
-\acronym{API} key. See \code{\link[=get_key]{get_key()}} for setup.}
+\acronym{API} key.  See \code{\link[=get_key]{get_key()}} for setup.}
 
 \item{max_tries}{Maximum number of download retries before an error is
 raised. Default=\code{NULL}, in which case the maximum retry number is
@@ -35,10 +35,10 @@ resolved from the option \code{nert.max_tries} if that option exists.
 (Defaults to 3 retries if \code{nert.max_tries} has not been set.)}
 
 \item{initial_delay}{Initial retry delay in seconds. Each later delay is
-roughly double the one before. Default=\code{NULL}, in which case the
-initial delay is resolved from the option \code{nert.initial_delay} if that
-option exists. (Defaults to a 1 second initial delay if
-\code{nert.initial_delay} has not been set.)}
+roughly double the one before. Default=\code{NULL}, in which case the initial
+delay is resolved from the option \code{nert.initial_delay} if that option
+exists. (Defaults to a 1 second initial delay if \code{nert.initial_delay} has
+not been set.)}
 }
 \value{
 A \link[terra:SpatRaster]{terra::SpatRaster} object containing the soil order classes (or the
@@ -53,15 +53,21 @@ a Random Forest classifier. The dataset also provides a confusion index
 raster that estimates the uncertainty (between 0.0 and 1.0) associated with
 the classification.
 }
+\section{{terra} re-exports}{
+
+To support working with this dataset, \link[terra:plot]{terra::plot}, \link[terra:levels]{terra::levels} and
+\link[terra:cats]{terra::cats} are re-exported by \pkg{nert}.
+}
+
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 # Australian Soil Classification (soil orders as character)
 r_asc <- read_asc()
-terra::plot(r_asc)
+plot(r_asc)
 
 # Confusion Index (uncertainty of the classification, higher=more uncertain)
 r_ci <- read_asc(collection = "CI")
-terra::plot(r_ci)
+plot(r_ci)
 \dontshow{\}) # examplesIf}
 }
 \references{

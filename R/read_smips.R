@@ -33,17 +33,7 @@
 #'       An estimate of the moisture lost from the top 0-10cm bucket due to
 #'       runoff or overtopping.}
 #'   }
-#' @param api_key A \code{character} string containing your \acronym{TERN}
-#'   \acronym{API} key.  See [get_key()] for setup.
-#' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=\code{NULL}, in which case the maximum retry number is
-#'   resolved from the option \code{nert.max_tries} if that option exists.
-#'   (Defaults to 3 retries if \code{nert.max_tries} has not been set.)
-#' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=\code{NULL}, in which case the
-#'   initial delay is resolved from the option \code{nert.initial_delay} if that
-#'   option exists. (Defaults to a 1 second initial delay if
-#'   \code{nert.initial_delay} has not been set.)
+#' @inheritParams read_tern
 #'
 #' @returns
 #' A [terra::SpatRaster] object of the requested SMIPS collection.
@@ -54,7 +44,7 @@
 #' @examplesIf interactive()
 #' # Total volumetric soil moisture across both buckets (default)
 #' r <- read_smips("2024-01-15")
-#' terra::plot(r)
+#' plot(r)
 #'
 #' # Soil moisture index (0-1)
 #' r_smi <- read_smips("2024-01-15", collection = "SMindex")
@@ -102,11 +92,11 @@ read_smips <- function(
 
 #' Validate SMIPS arguments before the API key is checked
 #'
-#' SMIPS requires a daily \code{date} (the legacy \code{day} name is also
+#' SMIPS requires a daily `date` (the legacy `day` name is also
 #' accepted). Invoked by [read_tern()] via the [.tern_datasets] registry.
 #'
-#' @param dots Named list of \code{...} args from [read_tern()].
-#' @param dataset_id Raw \code{dataset_id} (unused; uniform validator signature).
+#' @inheritParams .read_tern_smips
+#' @inheritParams read_tern
 #' @returns `NULL`; called for its side effects (argument validation).
 #'
 #' @dev
@@ -125,8 +115,7 @@ read_smips <- function(
 #'
 #' @param did Normalised 8-char dataset ID (unused; uniform handler signature).
 #' @param dots Named list of \code{...} args from [read_tern()].
-#' @param api_key TERN API key.
-#' @param max_tries,initial_delay Passed to [.read_cog()].
+#' @inheritParams read_tern
 #' @returns A [terra::SpatRaster] object for the requested SMIPS layer/date.
 #'
 #'
@@ -211,8 +200,7 @@ read_smips <- function(
 #'
 #' Creates the SMIPS specific portion of a URL to read or fetch a COG.
 #'
-#' @param .collection The user-supplied SMIPS collection being asked for.
-#' @param .day The user-supplied date being asked for.
+#' @inheritParams .check_collection_agreement
 #' @returns A `character` filename for the requested SMIPS collection/date.
 #'
 #'

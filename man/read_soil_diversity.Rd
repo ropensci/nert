@@ -27,10 +27,10 @@ resolved from the option \code{nert.max_tries} if that option exists.
 (Defaults to 3 retries if \code{nert.max_tries} has not been set.)}
 
 \item{initial_delay}{Initial retry delay in seconds. Each later delay is
-roughly double the one before. Default=\code{NULL}, in which case the
-initial delay is resolved from the option \code{nert.initial_delay} if that
-option exists. (Defaults to a 1 second initial delay if
-\code{nert.initial_delay} has not been set.)}
+roughly double the one before. Default=\code{NULL}, in which case the initial
+delay is resolved from the option \code{nert.initial_delay} if that option
+exists. (Defaults to a 1 second initial delay if \code{nert.initial_delay} has
+not been set.)}
 }
 \value{
 A \link[terra:SpatRaster]{terra::SpatRaster} object of the requested Beta Diversity NMDS axis.
@@ -48,11 +48,11 @@ Australia.
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 # Read bacterial diversity NMDS axis 1
 r <- read_soil_diversity()
-terra::plot(r)
+plot(r)
 
 # Read fungal diversity NMDS axis 2
 r_f2 <- read_soil_diversity(collection = "Fungi", axis = 2)
-terra::plot(r_f2)
+plot(r_f2)
 \dontshow{\}) # examplesIf}
 }
 \references{

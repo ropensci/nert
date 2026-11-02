@@ -7,8 +7,12 @@
 .normalise_smips_collection(smips_collection)
 }
 \arguments{
-\item{smips_collection}{User-supplied vector of SMIPS datasets to
-collect (or \code{NULL}/\code{"all"}).}
+\item{smips_collection}{\emph{For SMIPS datasets.} A \code{character} vector
+containing the SMIPS datasets to be retrieved. (Default=All SMIPS
+datasets.) Options: \code{"totalbucket"}, \code{"SMindex"}, \code{"bucket1"},
+\code{"bucket2"}, \code{"deepD"}, \code{"runoff"}. Use \code{NULL} (default) or \code{"all"} to
+specify retrieval of all SMIPS datasets. This parameter is ignored for
+non-SMIPS datasets.}
 }
 \value{
 A \code{character} vector of valid SMIPS datasets (de-duplicated,

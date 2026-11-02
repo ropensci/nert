@@ -12,7 +12,8 @@
 \item{data_cols}{A \code{character} vector of column names to check (excludes
 \code{date}, \code{lon}, \code{lat}).}
 
-\item{na.rm}{Logical. If \code{TRUE}, drop all-NA rows.}
+\item{na.rm}{Logical.  If \code{TRUE}, drop rows where all dataset columns
+are \code{NA}. (Default=FALSE).}
 }
 \value{
 A (possibly filtered) \code{data.table}.

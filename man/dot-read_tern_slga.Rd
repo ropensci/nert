@@ -7,13 +7,23 @@
 .read_tern_slga(did, dots, api_key, max_tries, initial_delay)
 }
 \arguments{
-\item{did}{Normalised dispatch ID (e.g.\ \code{"482301c2"}, \code{"slga_cly"}).}
+\item{did}{Normalised 8-char dataset ID (unused; uniform handler signature).}
 
 \item{dots}{Named list of \code{...} args from \code{\link[=read_tern]{read_tern()}}.}
 
-\item{api_key}{TERN API key.}
+\item{api_key}{A \code{character} string containing your \acronym{TERN}
+\acronym{API} key.  See \code{\link[=get_key]{get_key()}} for setup.}
 
-\item{max_tries, initial_delay}{Passed to \code{\link[=.read_cog]{.read_cog()}}.}
+\item{max_tries}{Maximum number of download retries before an error is
+raised. Default=\code{NULL}, in which case the maximum retry number is
+resolved from the option \code{nert.max_tries} if that option exists.
+(Defaults to 3 retries if \code{nert.max_tries} has not been set.)}
+
+\item{initial_delay}{Initial retry delay in seconds. Each later delay is
+roughly double the one before. Default=\code{NULL}, in which case the initial
+delay is resolved from the option \code{nert.initial_delay} if that option
+exists. (Defaults to a 1 second initial delay if \code{nert.initial_delay} has
+not been set.)}
 }
 \value{
 A \link[terra:SpatRaster]{terra::SpatRaster} object for the requested SLGA attribute/depth/statistic.

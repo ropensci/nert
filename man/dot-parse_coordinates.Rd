@@ -7,11 +7,15 @@
 .parse_coordinates(lon, lat, xy)
 }
 \arguments{
-\item{lon}{Longitude(s).}
+\item{lon}{Longitude(s) (WGS84, EPSG:4326).  Numeric scalar or vector
+(same length as \code{lat}).  Omit if using \code{xy} notation.}
 
-\item{lat}{Latitude(s).}
+\item{lat}{Latitude(s) (WGS84, EPSG:4326).  Numeric scalar or vector
+(same length as \code{lon}).  Omit if using \code{xy} notation.}
 
-\item{xy}{Optional data.frame/matrix with lon/lat or x/y columns.}
+\item{xy}{Optional: a \code{data.frame}, \code{data.table}, or \code{matrix} with
+coordinate columns named \code{lon}/\code{lat} or \code{x}/\code{y}.  Takes precedence
+over \code{lon}/\code{lat} when supplied.}
 }
 \value{
 A 2-column \code{data.table} with columns \code{lon}, \code{lat}.

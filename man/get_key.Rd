@@ -10,8 +10,8 @@ get_key()
 A string value with your \acronym{API} key value.
 }
 \description{
-Fetches your \acronym{TERN} \acronym{API} key through \pkg{keyring}.  If no
-key is found, instructions for setting one up are shown and an error is
+Fetches your \acronym{TERN} \acronym{API} key through \CRANpkg{keyring}.  If
+no key is found, instructions for setting one up are shown and an error is
 raised.  Can be used to check that the key that \R is using is the key that
 you wish to be using, or for guidance in setting the key up in the first
 place.
@@ -25,7 +25,7 @@ before leaving the page, as it cannot be read back afterwards.
 }
 
 \section{Storing your key}{
-\pkg{nert} reads the key through \pkg{keyring}, a suggested package, so
+\pkg{nert} reads the key through \CRANpkg{keyring}, a suggested package, so
 install it first with \code{install.packages("keyring")}.
 
 The \code{"nert"} keyring is read first, where the backend supports named
@@ -43,7 +43,7 @@ keychain, which unlocks when you log in:
 key_set("TERN_API_KEY")
 }\if{html}{\out{</div>}}
 
-On a machine with no password manager, \pkg{keyring} reads the environment
+On a machine with no password manager, \CRANpkg{keyring} reads the environment
 instead.  Set both variables in the \code{.Renviron} file that
 \code{\link[usethis:edit_r_environ]{usethis::edit_r_environ()}} opens, then restart \R:
 

@@ -18,25 +18,70 @@
 )
 }
 \arguments{
-\item{datasets}{Normalised alias vector.}
+\item{datasets}{A \code{character} vector of dataset aliases to collect.
+(Default=All datasets.) Options: \code{"SMIPS"}, \code{"ASC"}, \code{"AET"}, \code{"AWC"},
+\code{"CLY"}, \code{"SND"}, \code{"SLT"}, \code{"BDW"}, \code{"PHC"}, \code{"PHW"}, \code{"NTO"}, \code{"AVP"},
+\code{"PTO"}, \code{"CEC"}, \code{"ECE"}, \code{"DUL"}, \code{"L15"}, \code{"SOILDIV"}, \code{"CANOPY"},
+\code{"PHENOLOGY"}. Use \code{NULL} (default) or \code{"all"} to specify retrieval
+of all available datasets.}
 
-\item{dates}{Resolved \code{Date} vector.}
+\item{dates}{A \code{Date} vector or \code{character} vector, indicating the
+exact set of dates for which TERN datasets should be retrieved. Takes
+precedence over \code{date_range} if supplied.}
 
-\item{depth}{SLGA depth selector.}
+\item{depth}{\emph{For SLGA datasets.} A \code{character} vector containing the
+depth interval(s) for the SLGA soil attributes to collect.
+(Default=All depths.) Options: \code{"000_005"}, \code{"005_015"}, \code{"015_030"},
+\code{"030_060"}, \code{"060_100"}, \code{"100_200"}. Use \code{NULL} (default) or \code{"all"}
+to specify retrieval of all available depths. This parameter is ignored
+for non-SLGA datasets.}
 
-\item{stat}{SLGA stat selector.}
+\item{stat}{\emph{For SLGA datasets.} A \code{character} vector containing the
+statistic to retrieve for the SLGA datasets. (Default=All statistics.)
+Options: \code{"EV"} (estimated value), \code{"05"} (lower, 5th-percentile
+bound), \code{"95"} (upper, 95th-percentile bound); the \code{05} and \code{95}
+layers together span a 90\% interval. Use \code{NULL} (default) or \code{"all"} to
+specify retrieval of all statistics. This parameter is ignored for non-SLGA
+datasets.}
 
-\item{smips_collection}{SMIPS collection selector.}
+\item{smips_collection}{\emph{For SMIPS datasets.} A \code{character} vector
+containing the SMIPS datasets to be retrieved. (Default=All SMIPS
+datasets.) Options: \code{"totalbucket"}, \code{"SMindex"}, \code{"bucket1"},
+\code{"bucket2"}, \code{"deepD"}, \code{"runoff"}. Use \code{NULL} (default) or \code{"all"} to
+specify retrieval of all SMIPS datasets. This parameter is ignored for
+non-SMIPS datasets.}
 
-\item{asc_collection}{ASC collection selector.}
+\item{asc_collection}{\emph{For ASC datasets.} A \code{character} vector specifying
+the Australian Soil Classification Map datasets to be retrieved.
+(Default=All ASC datasets.) Options: \code{"EV"} (estimated soil order),
+\code{"CI"} (confusion index). Use \code{NULL} (default) or \code{"all"} to specify
+retrieval of all ASC datasets.}
 
-\item{aet_collection}{AET collection selector.}
+\item{aet_collection}{\emph{For AET datasets.} A \code{character} vector specifying
+the Actual Evapotranspiration datasets to be retrieved. (Default=All
+AET datasets.) Options: \code{"ETa"}, \code{"pixel_qa"} (quality assurance flags).
+Use \code{NULL} (default) or \code{"all"} to specify retrieval of all AET datasets.
+This parameter is ignored for non-AET datasets.}
 
-\item{soildiv_collection}{SOILDIV collection selector.}
+\item{soildiv_collection}{\emph{For SOILDIV datasets.} A \code{character} vector
+specifying the beta soil diversity NMDS axes to be retrieved.
+(Default=All axes/datasets.) Options: \code{"Bacteria_NMDS1"},
+\code{"Bacteria_NMDS2"}, \code{"Bacteria_NMDS3"}, \code{"Fungi_NMDS1"}, \code{"Fungi_NMDS2"},
+\code{"Fungi_NMDS3"}. Use \code{NULL} (default) or \code{"all"} to specify retrieval
+of all SOILDIV axes/datasets.}
 
-\item{phenology_collection}{PHENOLOGY collection selector.}
+\item{phenology_collection}{\emph{For PHENOLOGY datasets.} A \code{character} vector
+specifying the phenology datasets to be retrieved. (Default=All
+PHENOLOGY datasets.) Options: \code{"SGS"}, \code{"PGS"}, \code{"EGS"}, \code{"LGS"},
+\code{"EVI1"}, \code{"EVI2"}, \code{"EVIP"}, \code{"EVII"}, \code{"SGS_month"}, \code{"PGS_month"},
+\code{"EGS_month"}. Use \code{NULL} (default) or \code{"all"} to specify retrieval of
+all PHENOLOGY datasets.}
 
-\item{canopy_collection}{CANOPY collection selector.}
+\item{canopy_collection}{\emph{For CANOPY datasets.} A \code{character} vector
+specifying the OzTreeMap canopy height composite(s) to be retrieved.
+(Default=All CANOPY datasets.) Options: \code{"best_pick"}, \code{"median"}. Use
+\code{NULL} (default) or \code{"all"} to specify retrieval of all CANOPY datasets.
+This parameter is ignored for non-CANOPY datasets.}
 }
 \value{
 A list of work-item lists.

@@ -14,17 +14,7 @@
 #'   is snapped to the first of the month internally.  Required.
 #' @param collection One of `"ETa"` (actual evapotranspiration in
 #'   mm/month, default) or `"pixel_qa"` (quality assurance attributes).
-#' @param api_key A `character` string containing your \acronym{TERN}
-#'   \acronym{API} key.  See [get_key()] for setup.
-#' @param max_tries Maximum number of download retries before an error is
-#'   raised. Default=`NULL`, in which case the maximum retry number is
-#'   resolved from the option `nert.max_tries` if that option exists.
-#'   (Defaults to 3 retries if `nert.max_tries` has not been set.)
-#' @param initial_delay Initial retry delay in seconds. Each later delay is
-#'   roughly double the one before. Default=`NULL`, in which case the initial
-#'   delay is resolved from the option `nert.initial_delay` if that option
-#'   exists. (Defaults to a 1 second initial delay if `nert.initial_delay` has
-#'   not been set.)
+#' @inheritParams read_tern
 #'
 #' @returns
 #' A [terra::SpatRaster] object of the requested evapotranspiration collection.
@@ -35,7 +25,7 @@
 #' @examplesIf interactive()
 #' # Actual evapotranspiration (ETa) for June 2023 (mm/month)
 #' r_eta <- read_aet("2023-06-01")
-#' terra::plot(r_eta)
+#' plot(r_eta)
 #'
 #' # January 2023 ET
 #' r_jan <- read_aet("2023-01-01")
@@ -83,8 +73,8 @@ read_aet <- function(
 #' accepted) within the data-availability window (from 1987-05-01). Invoked by
 #' [read_tern()] via the [.tern_datasets] registry.
 #'
-#' @param dots Named list of `...` args from [read_tern()].
-#' @param dataset_id Raw `dataset_id` (unused; uniform validator signature).
+#' @inheritParams .read_tern_smips
+#' @inheritParams read_tern
 #' @returns `NULL` (invisibly); called for its side effects (errors).
 #'
 #' @dev
@@ -103,10 +93,8 @@ read_aet <- function(
 
 #' Internal handler for retrieving the AET data
 #'
-#' @param did Normalised 8-char dataset ID (unused; uniform handler signature).
-#' @param dots Named list of `...` args from [read_tern()].
-#' @param api_key TERN API key.
-#' @param max_tries,initial_delay Passed to [.read_cog()].
+#' @inheritParams .read_tern_smips
+#' @inheritParams read_tern
 #' @returns A [terra::SpatRaster] object for the requested AET collection/date.
 #'
 #' @dev

@@ -7,8 +7,11 @@
 .normalise_aet_collection(aet_collection)
 }
 \arguments{
-\item{aet_collection}{User-supplied vector of AET datasets to
-collect (or \code{NULL}/\code{"all"}).}
+\item{aet_collection}{\emph{For AET datasets.} A \code{character} vector specifying
+the Actual Evapotranspiration datasets to be retrieved. (Default=All
+AET datasets.) Options: \code{"ETa"}, \code{"pixel_qa"} (quality assurance flags).
+Use \code{NULL} (default) or \code{"all"} to specify retrieval of all AET datasets.
+This parameter is ignored for non-AET datasets.}
 }
 \value{
 A \code{character} vector of valid AET datasets (de-duplicated,

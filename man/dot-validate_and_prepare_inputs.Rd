@@ -7,15 +7,25 @@
 .validate_and_prepare_inputs(dates, date_range, lon, lat, xy)
 }
 \arguments{
-\item{dates}{User-supplied exact dates (or missing).}
+\item{dates}{A \code{Date} vector or \code{character} vector, indicating the
+exact set of dates for which TERN datasets should be retrieved. Takes
+precedence over \code{date_range} if supplied.}
 
-\item{date_range}{User-supplied date range (or missing).}
+\item{date_range}{A \code{Date} vector or \code{character} vector of length 2,
+\verb{[start_date, end_date]}, indicating the start and end date which
+should be used for the TERN dataset retrieval. (If a vector of length
+greater than 2 is given, this parameter works exactly as \code{dates} does.)
+Omit if specifying exact dates via the \code{dates} argument instead.}
 
-\item{lon}{Longitude(s).}
+\item{lon}{Longitude(s) (WGS84, EPSG:4326).  Numeric scalar or vector
+(same length as \code{lat}).  Omit if using \code{xy} notation.}
 
-\item{lat}{Latitude(s).}
+\item{lat}{Latitude(s) (WGS84, EPSG:4326).  Numeric scalar or vector
+(same length as \code{lon}).  Omit if using \code{xy} notation.}
 
-\item{xy}{Optional data.frame/matrix with coordinate columns.}
+\item{xy}{Optional: a \code{data.frame}, \code{data.table}, or \code{matrix} with
+coordinate columns named \code{lon}/\code{lat} or \code{x}/\code{y}.  Takes precedence
+over \code{lon}/\code{lat} when supplied.}
 }
 \value{
 A named list with elements \code{dates}, \code{n_dt}, \code{coords_df}, \code{n_loc},

@@ -7,7 +7,12 @@
 .normalise_datasets(datasets)
 }
 \arguments{
-\item{datasets}{User-supplied aliases (or \code{NULL}/\code{"all"}).}
+\item{datasets}{A \code{character} vector of dataset aliases to collect.
+(Default=All datasets.) Options: \code{"SMIPS"}, \code{"ASC"}, \code{"AET"}, \code{"AWC"},
+\code{"CLY"}, \code{"SND"}, \code{"SLT"}, \code{"BDW"}, \code{"PHC"}, \code{"PHW"}, \code{"NTO"}, \code{"AVP"},
+\code{"PTO"}, \code{"CEC"}, \code{"ECE"}, \code{"DUL"}, \code{"L15"}, \code{"SOILDIV"}, \code{"CANOPY"},
+\code{"PHENOLOGY"}. Use \code{NULL} (default) or \code{"all"} to specify retrieval
+of all available datasets.}
 }
 \value{
 A \code{character} vector of recognised aliases (de-duplicated,

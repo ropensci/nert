@@ -29,7 +29,7 @@ read_slga(
 interval.}
 
 \item{api_key}{A \code{character} string containing your \acronym{TERN}
-\acronym{API} key. See \code{\link[=get_key]{get_key()}} for setup.}
+\acronym{API} key.  See \code{\link[=get_key]{get_key()}} for setup.}
 
 \item{max_tries}{Maximum number of download retries before an error is
 raised. Default=\code{NULL}, in which case the maximum retry number is
@@ -37,10 +37,10 @@ resolved from the option \code{nert.max_tries} if that option exists.
 (Defaults to 3 retries if \code{nert.max_tries} has not been set.)}
 
 \item{initial_delay}{Initial retry delay in seconds. Each later delay is
-roughly double the one before. Default=\code{NULL}, in which case the
-initial delay is resolved from the option \code{nert.initial_delay} if that
-option exists. (Defaults to a 1 second initial delay if
-\code{nert.initial_delay} has not been set.)}
+roughly double the one before. Default=\code{NULL}, in which case the initial
+delay is resolved from the option \code{nert.initial_delay} if that option
+exists. (Defaults to a 1 second initial delay if \code{nert.initial_delay} has
+not been set.)}
 }
 \value{
 A \link[terra:SpatRaster]{terra::SpatRaster} object of the requested SLGA soil attribute.
@@ -78,7 +78,7 @@ each with six standard depth layers (0-5cm, 5-15cm, 15-30cm, 30-60cm,
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 # Read clay content at 0-5 cm depth (default depth)
 r <- read_slga("CLY")
-terra::plot(r)
+plot(r)
 
 # Read available water capacity at 15-30 cm
 r_awc <- read_slga("AWC", depth = "015_030")

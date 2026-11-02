@@ -319,7 +319,7 @@ test_that("PHENOLOGY rows outside 2003-2018 are NA with a warning", {
   expect_true(all(grepl("_2005_Season[12]\\.tif$", sink$urls)))
   # 2 out-of-window years x 2 seasons, each naming the window
   expect_length(warns, 4L)
-  expect_true(all(grepl("2003--2018", warns)))
+  expect_true(all(grepl("2003--2018", warns, fixed = TRUE)))
 
   expected <- ifelse(format(out$date, "%Y") == "2005", 5, NA_real_)
   expect_identical(out$PHENOLOGY_SGS_s1, expected)

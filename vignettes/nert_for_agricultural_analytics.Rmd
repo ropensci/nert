@@ -48,8 +48,8 @@ str(grain)
 #>  $ Site             : Factor w/ 10 levels "Adelaide","Barossa Valley",..: 1 1 1 1 1 1 1 1 1 1 ...
 #>  $ Latitude         : num  -34.9 -34.9 -34.9 -34.9 -34.9 ...
 #>  $ Longitude        : num  139 139 139 139 139 ...
-#>  $ SowDate          : Date, format: "2022-05-20" "2022-05-20" ...
-#>  $ NitrogenDate     : Date, format: "2022-06-04" "2022-06-04" ...
+#>  $ SowDate          : Date, format: "2022-05-20" "2022-05-20" "2022-05-20" "2022-05-20" ...
+#>  $ NitrogenDate     : Date, format: "2022-06-04" "2022-06-04" "2022-06-04" "2022-06-04" ...
 #>  $ Rep              : Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 #>  $ Variety          : Factor w/ 8 levels "Variety_A","Variety_B",..: 1 1 1 1 1 1 1 1 1 1 ...
 #>  $ Nitrogen_kgNha   : Factor w/ 4 levels "0","30","60",..: 1 1 1 2 2 2 3 3 3 4 ...
@@ -104,17 +104,19 @@ retrieve from the `grain` dataset columns `Longitude` and `Latitude`:
 ``` r
 sites <- unique(grain[, c("Site", "Longitude", "Latitude")])
 sites
-#>                    Site Longitude  Latitude
-#> 1              Adelaide  138.6244 -34.94773
-#> 289      Barossa Valley  138.9580 -34.54843
-#> 577        Clare Valley  138.6012 -33.83754
-#> 865      Eyre Peninsula  135.7967 -34.37378
-#> 1153 Fleurieu Peninsula  138.4608 -35.52307
-#> 1441    Kangaroo Island  137.0736 -35.71041
-#> 1729    Limestone Coast  140.6388 -37.88957
-#> 2017         Sturt Vale  140.0723 -33.34666
-#> 2305        Murraylands  139.3014 -35.12425
-#> 2593    Yorke Peninsula  137.2090 -35.05124
+#> # Data frame like object (class data.frame) 3 x 10:
+#>     │Site              │Longitude│Latitude
+#>     │<fct>             │<dbl>    │<dbl>   
+#>    1│Adelaide          │      139│     -35
+#>  289│Barossa Valley    │      139│     -35
+#>  577│Clare Valley      │      139│     -34
+#>  865│Eyre Peninsula    │      136│     -34
+#> 1153│Fleurieu Peninsula│      138│     -36
+#> 1441│Kangaroo Island   │      137│     -36
+#> 1729│Limestone Coast   │      141│     -38
+#> 2017│Sturt Vale        │      140│     -33
+#> 2305│Murraylands       │      139│     -35
+#> 2593│Yorke Peninsula   │      137│     -35
 ```
 
 Now TERN supplies the SMIPS daily data rasters as cloud-optimised GeoTIFFs
@@ -157,20 +159,17 @@ for (i in seq_along(date_range)) {
     )
   )
 }
-#> Warning: nert has set the GDAL option `GDAL_HTTP_USERPWD` to your TERN API key for the
-#> rest of this R session.
-#> ℹ GDAL sends the key with every `/vsicurl` request in this session, including
-#>   requests to servers other than TERN.
-#> ℹ Restart R to clear it.
 
 head(smips_data)
-#>         Date Longitude  Latitude  smips_smi
-#> 1 2022-05-07  138.6244 -34.94773 0.25906488
-#> 2 2022-05-07  138.9580 -34.54843 0.17677850
-#> 3 2022-05-07  138.6012 -33.83754 0.07674548
-#> 4 2022-05-07  135.7967 -34.37378 0.53408158
-#> 5 2022-05-07  138.4608 -35.52307 0.37496096
-#> 6 2022-05-07  137.0736 -35.71041 0.30223876
+#> # Data frame like object (class data.frame) 4 x 6:
+#>  │Date      │Longitude│Latitude│smips_smi
+#>  │<oth>     │<dbl>    │<dbl>   │<dbl>    
+#> 1│2022-05-07│      139│     -35│    0.259
+#> 2│2022-05-07│      139│     -35│    0.177
+#> 3│2022-05-07│      139│     -34│    0.077
+#> 4│2022-05-07│      136│     -34│    0.534
+#> 5│2022-05-07│      138│     -36│    0.375
+#> 6│2022-05-07│      137│     -36│    0.302
 ```
 
 We can add the `Site` column to the `smips_data` to make it easier to use it
@@ -180,13 +179,15 @@ in conjunction with the `grain` dataset during the analysis:
 ``` r
 smips_data$Site <- sites$Site
 head(smips_data)
-#>         Date Longitude  Latitude  smips_smi               Site
-#> 1 2022-05-07  138.6244 -34.94773 0.25906488           Adelaide
-#> 2 2022-05-07  138.9580 -34.54843 0.17677850     Barossa Valley
-#> 3 2022-05-07  138.6012 -33.83754 0.07674548       Clare Valley
-#> 4 2022-05-07  135.7967 -34.37378 0.53408158     Eyre Peninsula
-#> 5 2022-05-07  138.4608 -35.52307 0.37496096 Fleurieu Peninsula
-#> 6 2022-05-07  137.0736 -35.71041 0.30223876    Kangaroo Island
+#> # Data frame like object (class data.frame) 5 x 6:
+#>  │Date      │Longitude│Latitude│smips_smi│Site              
+#>  │<oth>     │<dbl>    │<dbl>   │<dbl>    │<fct>             
+#> 1│2022-05-07│      139│     -35│    0.259│Adelaide          
+#> 2│2022-05-07│      139│     -35│    0.177│Barossa Valley    
+#> 3│2022-05-07│      139│     -34│    0.077│Clare Valley      
+#> 4│2022-05-07│      136│     -34│    0.534│Eyre Peninsula    
+#> 5│2022-05-07│      138│     -36│    0.375│Fleurieu Peninsula
+#> 6│2022-05-07│      137│     -36│    0.302│Kangaroo Island
 ```
 
 We are now ready to proceed with the analytics.
@@ -305,8 +306,7 @@ ggplot(ci, aes(x = est., y = term, colour = model)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="ploteffects-1.png" alt="Nitrogen effect estimates compared between the simple model and
-  the SMIPS-augmented model." width="100%" />
+<img src="ploteffects-1.png" alt="Nitrogen effect estimates compared between the simple model and&#10;  the SMIPS-augmented model." width="100%" />
 <p class="caption">Nitrogen effect estimates compared between the simple model and
   the SMIPS-augmented model.</p>
 </div>

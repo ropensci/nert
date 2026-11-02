@@ -7,8 +7,11 @@
 .normalise_asc_collection(asc_collection)
 }
 \arguments{
-\item{asc_collection}{User-supplied vector of ASC datasets to collect
-(or \code{NULL}/\code{"all"}).}
+\item{asc_collection}{\emph{For ASC datasets.} A \code{character} vector specifying
+the Australian Soil Classification Map datasets to be retrieved.
+(Default=All ASC datasets.) Options: \code{"EV"} (estimated soil order),
+\code{"CI"} (confusion index). Use \code{NULL} (default) or \code{"all"} to specify
+retrieval of all ASC datasets.}
 }
 \value{
 A \code{character} vector of valid ASC datasets (de-duplicated,

@@ -35,20 +35,23 @@
   # .aux.xml holds the ASC class names
   old_ext <- terra::getGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS")
   terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", ".tif,.vrt,.aux.xml")
-  on.exit(terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", old_ext))
+  on.exit(
+    terra::setGDALconfig("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", old_ext),
+    add = TRUE
+  )
 
   return(tryCatch(
     terra::rast(full_url, opts = opts),
     error = function(e) {
       msg <- "Could not read the file from TERN."
       if (max_tries > 1L) {
-        msg <- c(
+        msg2 <- c(
           msg,
           "i" = "Busy and server-error responses were retried up to
             {max_tries - 1L} time{?s}."
         )
       }
-      cli::cli_abort(msg)
+      cli::cli_abort(msg2)
     }
   ))
 }
