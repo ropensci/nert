@@ -257,7 +257,7 @@
   "applicationCategory": "Tools",
   "isPartOf": "https://grdc.com.au/research/partnerships-and-initiatives/strategic-partnerships/aagi",
   "keywords": ["TERN", "Australia", "soil-data", "soil-moisture", "evapotranspiration", "vegetation", "phenology", "raster", "geospatial", "cloud-optimised-geotiff", "gdal", "terra", "data-access", "ropensci", "agricultural-data", "agriculture", "australia", "australian-data", "data-retrieval", "ecological", "ecological-data"],
-  "fileSize": "1955.144KB",
+  "fileSize": "1955.152KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

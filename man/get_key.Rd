@@ -43,7 +43,7 @@ keychain, which unlocks when you log in:
 key_set("TERN_API_KEY")
 }\if{html}{\out{</div>}}
 
-On a machine with no password manager, \pkg{keyring} reads the environment
+On a machine with no password manager, \CRANpkg{keyring} reads the environment
 instead.  Set both variables in the \code{.Renviron} file that
 \code{\link[usethis:edit_r_environ]{usethis::edit_r_environ()}} opens, then restart \R:
 

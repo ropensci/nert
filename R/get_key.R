@@ -36,7 +36,7 @@
 #' key_set("TERN_API_KEY")
 #' ```
 #'
-#' On a machine with no password manager, \pkg{keyring} reads the environment
+#' On a machine with no password manager, \CRANpkg{keyring} reads the environment
 #'   instead.  Set both variables in the `.Renviron` file that
 #'   [usethis::edit_r_environ()] opens, then restart \R:
 #'
