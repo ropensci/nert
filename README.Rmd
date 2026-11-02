@@ -109,6 +109,7 @@ Note that since these are cloud-optimised COGs, they employ Just-In-Time data st
 #| eval: true
 
 library(nert)
+library(terra)
 
 r <- read_smips(date = "2024-01-01")
 extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))

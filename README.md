@@ -94,27 +94,20 @@ Note that since these are cloud-optimised COGs, they employ Just-In-Time data st
 
 ``` r
 library(nert)
-#> Registered S3 method overwritten by 'data.table':
-#>   method           from   
-#>   print.data.table colorDF
+library(terra)
+#> terra 1.9.50
 #> 
-#> Attaching package: 'nert'
-#> The following object is masked from 'package:graphics':
+#> Attaching package: 'terra'
+#> The following object is masked from 'package:knitr':
 #> 
-#>     plot
-#> The following objects are masked from 'package:base':
-#> 
-#>     levels, plot
+#>     spin
 
 r <- read_smips(date = "2024-01-01")
-#> Warning: nert has set the GDAL option `GDAL_HTTP_USERPWD` to your TERN API key for the rest of this
-#> R session.
-#> ℹ GDAL sends the key with every `/vsicurl` request in this session, including requests to
-#>   servers other than TERN.
-#> ℹ Restart R to clear it.
 extract(r, xy = TRUE, data.frame(lon = 138.6007, lat = -34.9285))
-#> Error in `extract()`:
-#> ! could not find function "extract"
+#> # Data frame like object (class data.frame) 4 x 1:
+#>  │ID   │smips_totalbucket_mm_20240101│x    │y    
+#>  │<dbl>│<dbl>                        │<dbl>│<dbl>
+#> 1│    1│                           46│  139│  -35
 ```
 
 Plot the Australia-wide rasters with `plot()`, the `plot()` from {terra} is re-exported by this package, so there is no need to load that package as well, just having {nert} loaded is enough.
