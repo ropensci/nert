@@ -11,6 +11,7 @@ BDW
 Biome
 CBD
 CEC
+CI
 CILogon
 CLY
 CMD
@@ -31,6 +32,7 @@ Dobarco
 ECE
 EGS
 EPSG
+EV
 EVI
 EvapoTranspiration
 Evapotranspiration
@@ -41,6 +43,7 @@ GRDC
 GeoNetwork
 GeoTIFF
 GeoTIFFs
+Geospatial
 GitHub
 GlobalSoilMap
 Guerschman
@@ -78,13 +81,14 @@ Peña
 Phenology
 Podosol
 Pucino
+README
 RHEL
 ROR
 RStudio
-Renviron
+Reexport
 Renzullo
 Rossel
-Rprofile
+Roxygen
 Rudosol
 Runoff
 SGS
@@ -117,6 +121,7 @@ Xie
 Xue
 Zund
 aet
+alt
 anonymised
 args
 asc
@@ -124,6 +129,7 @@ backoff
 codecov
 confounder
 curated
+deduplicate
 er
 etc
 evapotranspiration
@@ -131,9 +137,12 @@ fifo
 funder
 geospatial
 ggplot
+github
 gridded
 i
+keychain
 keyring
+keyrings
 lat
 locational
 lon
@@ -151,9 +160,11 @@ predeclares
 rOpenSci
 redownloading
 refactored
+ropensci
 roxygen
 runnability
 runoff
+screenshots
 setup
 sf
 smips
@@ -162,12 +173,13 @@ spatio
 st
 stat
 terra
+testthat
 th
-tidyterra
 totalbucket
 tuples
 unitless
 validator
 ve
 vsicurl
+workflow
 workflows
