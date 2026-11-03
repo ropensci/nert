@@ -1,5 +1,5 @@
 ---
-title: 'nert: Curated Access to TERN Environmental Raster Data in R'
+title: "nert: Curated Access to TERN Environmental Raster Data in R"
 tags:
   - R
   - Australia
@@ -12,26 +12,26 @@ tags:
   - GDAL
   - agriculture
 authors:
-  - name: Adam H. Sparks
-    orcid: 0000-0002-0061-8359
-    affiliation: 1
-  - name: Russell Edson
-    orcid: 0000-0002-4607-5396
-    affiliation: 2
-  - name: Wasin Pipattungsakul
-    orcid: 0009-0005-2666-6315
-    affiliation: 2
-  - name: Sam Rogers
-    orcid: 0000-0002-8147-1239
-    affiliation: 2
   - name: Max Moldovan
     orcid: 0000-0001-9680-8474
     corresponding: true
+    affiliation: 1
+  - name: Russell Edson
+    orcid: 0000-0002-4607-5396
+    affiliation: 1
+  - name: Wasin Pipattungsakul
+    orcid: 0009-0005-2666-6315
+    affiliation: 1
+  - name: Sam Rogers
+    orcid: 0000-0002-8147-1239
+    affiliation: 1
+  - name: Adam H. Sparks
+    orcid: 0000-0002-0061-8359
     affiliation: 2
 affiliations:
-  - name: Centre for Crop and Disease Management, School of Molecular and Life Sciences, Curtin University, Bentley, Western Australia, Australia
-    index: 1
   - name: School of Agriculture, Food and Wine, Adelaide University, Urrbrae, South Australia, Australia
+    index: 1
+  - name: Centre for Crop and Disease Management, School of Molecular and Life Sciences, Curtin University, Bentley, Western Australia, Australia
     index: 2
 date: 3 November 2026
 bibliography: paper.bib
