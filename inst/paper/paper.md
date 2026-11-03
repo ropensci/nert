@@ -44,9 +44,9 @@ The products contain large files stored in the cloud-optimised GeoTIFF (COG) for
 Each product has its own folder layout, file names, time step, date range and map projection.
 
 `nert` is an R package that reads these seven families of maps.
-`read_tern()` returns a single map as a `terra` `SpatRaster` [@terra] and downloads only the part that is needed.
-`collect_tern_data()` returns values from many maps, at many locations and dates, as one `data.table` [@datatable].
-It can be installed from the rOpenSci R-universe (<https://ropensci.r-universe.dev/nert>), and its source is at <https://github.com/ropensci/nert>.
+`read_tern()` returns a single data object as a `terra` `SpatRaster` [@terra] and downloads only the requested data, precluding the need to download the entire national dataset.
+`collect_tern_data()` returns values from multiple products, at many locations and dates, as one `data.table` [@datatable] object.
+It can be installed from the rOpenSci R-universe (<https://ropensci.r-universe.dev/nert>) or the Comprehensive R Archive Network (CRAN) (<CRAN.R-project.org/package=nert>), and its source is at <https://www.github.com/ropensci/nert>.
 The package covers the seven families through 20 short names, or aliases, such as `"SMIPS"` for soil moisture and `"CLY"` for clay content.
 
 # Statement of need
