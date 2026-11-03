@@ -51,9 +51,9 @@ The package covers the seven families through 20 short names, or aliases, such a
 
 # Statement of need
 
-Agronomists, soil scientists and ecologists often need environmental information contained in TERN's data layers at the locations and dates of their own field trials.
+Agronomists, soil scientists and ecologists often need environmental information contained in TERN's data layers at the locations and dates of their own field trials or for other research purposes.
 Collecting manually, this takes several steps for each product.
-The user has to find the file path, build a URL, pass an API key, check that the date exists for that product, and read the file with the Geospatial Data Abstraction Library (GDAL) [@GDAL2026] without downloading a whole national map.
+The user has to find the file path, build a URL, pass an API key, check that the date exists for that product, and read the file with the Geospatial Data Abstraction Library (GDAL) [@GDAL2026] without downloading a whole national data set.
 A small typo in a path or a date returns no file, or worse, the wrong file without a warning.
 
 `nert` greatly simplifies data download, minimising the risk of a query mistake and allowing TERN data collection for a naïve curious user.
