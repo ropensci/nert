@@ -1,3 +1,12 @@
+# nert 2.1.1
+
+## Minor fixes
+
+- Redocument so that @mdsumner's ORCID is properly included in package Documentation.
+- Fix the release number in DESCRIPTION .
+- Fix codecov badge.
+- Fix URL field in \_pkgdown.yml file.
+
 # nert 2.1.0
 
 Accepted by rOpenSci!
