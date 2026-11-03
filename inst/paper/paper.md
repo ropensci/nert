@@ -39,8 +39,8 @@ bibliography: paper.bib
 
 # Summary
 
-Australia's Terrestrial Ecosystem Research Network (TERN) publishes national maps of soil properties [for example, clay content, @Malone2022clay], soil classes [@Searle2021], soil bacterial and fungal diversity [@RomanDobarco2022], daily soil moisture [@Stenson2021], actual evapotranspiration [@McVicar2021], canopy height [@Pucino2025] and land surface phenology [@Xie2024].
-The maps are large files on TERN's data server.
+Australia's Terrestrial Ecosystem Research Network (TERN) publishes several national-scale geospatial data sets (hereafter referred to as products) of soil properties [for example, clay content, @Malone2022clay], soil classes [@Searle2021], soil bacterial and fungal diversity [@RomanDobarco2022], daily soil moisture [@Stenson2021], actual evapotranspiration [@McVicar2021], canopy height [@Pucino2025] and land surface phenology [@Xie2024].
+The products contain large files stored in the cloud-optimised GeoTIFF (COG) format on TERN's data server along with other metadata.
 Each product has its own folder layout, file names, time step, date range and map projection.
 
 `nert` is an R package that reads these seven families of maps.
