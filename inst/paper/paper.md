@@ -43,7 +43,7 @@ Australia's Terrestrial Ecosystem Research Network (TERN) publishes several nati
 The products contain large files stored in the cloud-optimised GeoTIFF (COG) format on TERN's data server along with other metadata.
 Each product has its own folder layout, file names, time step, date range and map projection.
 
-`nert` is an R package that reads these seven families of maps.
+`nert` is an R package that reads these seven families of data.
 `read_tern()` returns a single data object as a `terra` `SpatRaster` [@terra] and downloads only the requested data, precluding the need to download the entire national dataset.
 `collect_tern_data()` returns values from multiple products, at many locations and dates, as one `data.table` [@datatable] object.
 It can be installed from the rOpenSci R-universe (<https://ropensci.r-universe.dev/nert>) or the Comprehensive R Archive Network (CRAN) (<CRAN.R-project.org/package=nert>), and its source is at <https://www.github.com/ropensci/nert>.
@@ -53,7 +53,7 @@ The package covers the seven families through 20 short names, or aliases, such a
 
 Agronomists, soil scientists and ecologists often need environmental information contained in TERN's data layers at the locations and dates of their own field trials or for other research purposes.
 Collecting manually, this takes several steps for each product.
-The user has to find the file path, build a URL, pass an API key, check that the date exists for that product, and read the file with the Geospatial Data Abstraction Library (GDAL) [@GDAL2026] without downloading a whole national data set.
+The user has to find the file path, build a URL, pass an API key, check that the date exists for that product, then download the dataset and read the file or import directly from the TERN data portal with the Geospatial Data Abstraction Library (GDAL) [@GDAL2026].
 A small typo in a path or a date returns no file, or worse, the wrong file without a warning.
 
 `nert` greatly simplifies data download, minimising the risk of a query mistake and allowing TERN data collection for a naïve curious user.
@@ -66,8 +66,8 @@ The getting-started vignette shows, with screenshots, how to create a key on TER
 
 The `slga` package [@slga] reads the Soil and Landscape Grid of Australia, one of the seven families in `nert`, through web coverage services.
 It was archived on CRAN in September 2021 and is now available from GitHub.
-The `geodata` package [@geodata] downloads global and other national data, such as WorldClim climate and SoilGrids soil maps, but not TERN's products.
-The `ausplotsR` package [@ausplotsR] gives access to TERN's AusPlots field surveys of vegetation and soils, not to national maps.
+The `geodata` package [@geodata] downloads global and other national or global data, such as WorldClim climate and SoilGrids soil data, but not TERN's products.
+The `ausplotsR` package [@ausplotsR] gives access to TERN's AusPlots localised field surveys of vegetation and soils, not to national-scale data.
 
 TERN also runs a SpatioTemporal Asset Catalog (STAC).
 R users can search it with `rstac` [@Simoes2021], and Python users with TERN's own `tern-stac` package [@ternstac].
@@ -94,11 +94,11 @@ Each product family has its own reader, such as `read_smips()` or `read_aet()`, 
 Aliases are plain strings, not sensitive for case change.
 A script or a scheduled pipeline can take them from `show_datasets()` or from a configuration file and loop over products without code for each one.
 
-Reads go through GDAL's virtual file system for remote files.
-Only the parts of a file that a crop or a point touches are downloaded, as the *Bandwidth-safe spatial subsetting* vignette shows.
+Reads go through GDAL's virtual file-system for remote files.
+Only the parts of a file that a crop or a point touches are downloaded, as the [*Bandwidth-safe spatial subsetting*](https://docs.ropensci.org/nert/articles/bandwidth_safe_subsetting.html) vignette shows.
 The API key is passed to GDAL as a setting and is never written into the URL.
 
-`collect_tern_data()` extracts any or all of the 20 products at a set of sites, for a date range or a list of dates.
+`collect_tern_data()` extracts any or all 20 products at a set of sites for a date range or a list of dates.
 Sites can be given as coordinates or as a table.
 The result is one `data.table` with a row for each site and date and a column for each variable, named by alias and collection, such as `SMIPS_totalbucket` or `AET_ETa`.
 One alias can therefore give several columns.
@@ -108,13 +108,13 @@ If a layer cannot be read, its columns are left as `NA` with a warning and the r
 Tests run offline and need no API key.
 Four vignettes cover getting started, agricultural analytics, reading only part of a file, and batch collection.
 
-![How `nert` reads data. Both `read_tern()` (top) and `collect_tern_data()` (bottom) check the request, build the URL and let GDAL download only the parts of the file that are needed. `collect_tern_data()` repeats this for each layer, once per date for time series and once for static layers. The example is daily soil moisture for 15 January 2024.\label{fig:flow}](figure_dataflow.png){width=100%}
+![A diagram illustrating how `nert` downloaded and imports data. Both `read_tern()` (top) and `collect_tern_data()` (bottom) check the request, build the URL and let GDAL download only the parts of the file that are needed. `collect_tern_data()` repeats this for each layer, once per date for time series and once for static layers. The example is daily soil moisture for 15 January 2024.\label{fig:flow}](figure_dataflow.png){width=100%}
 
 # Research impact statement
 
 `nert` was approved after rOpenSci software peer review, with two reviewers, in October 2026 [@review785].
-The package was developed in the Analytics for the Australian Grains Industry (AAGI) program to supply TERN's maps as covariates for agricultural analysis.
-Its vignette *Using nert to augment agricultural analytics with SMIPS data* works through such an analysis, adding daily soil moisture to field data and fitting a mixed model, and can be reused as a template.
+The package was developed in the Analytics for the Australian Grains Industry (AAGI) program to supply TERN's data as covariates for agricultural analysis.
+Its vignette [*Using nert to augment agricultural analytics with SMIPS data*](https://docs.ropensci.org/nert/articles/nert_for_agricultural_analytics.html) works through such an analysis, adding daily soil moisture to field data and fitting a mixed model, and can be reused as a template.
 
 # AI usage disclosure
 
@@ -135,7 +135,7 @@ Dataset paths, date limits and examples were checked against TERN's data server 
 # Acknowledgements
 
 We acknowledge the support of the Grains Research and Development Corporation (GRDC) through the Analytics for the Australian Grains Industry (AAGI) projects UOA2301-005OPX (AAGI-AU) and CUR2210-005OPX (AAGI-CU).
-We thank Michael Sumner and Shandiya Balasubramaniam for reviewing `nert` for rOpenSci, and Lauren O'Brien, the author of `slga`, for editing the review.
+We thank Michael Sumner and Shandiya Balasubramaniam for reviewing `nert` for rOpenSci, and Lauren O'Brien, the author of `slga`, for editing the [review](https://github.com/ropensci/software-review/issues/785).
 We thank TERN for making these products openly available.
 
 # References
