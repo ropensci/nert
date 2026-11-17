@@ -72,7 +72,7 @@ However, this package has been retired; it has been archived on CRAN since Septe
 
 TERN also runs a SpatioTemporal Asset Catalog (STAC). R users can search the TERN STAC with `rstac` [@Simoes2021], and Python users with TERN's own `tern-stac` package [@ternstac]. A catalogue search of the TERN STAC returns descriptions and file links, but the user still has to choose the right file, handle authentication, and work out which dates each product covers.
 
-We developed our new package `nert`, rather than extending an existing one. Extending the `slga` package would have necessitated adding a second protocol for six more families. Building off of the TERN STAC access provided by `rstac` would have allowed more generality for the dataset access, but also would have meant that the mechanism for accessing each data product would need to be discerned by the user. By contrast, `nert` reads seven TERN dataset families in a user-friendly way, making sure that a query returns the right dataset requested, or declines with an explicit and human-readable reason.
+We developed our new package `nert`, rather than extending an existing one. Extending the `slga` package would have necessitated updating the data access to work with the COGs on the TERN Data Portal, as well as adding a second protocol for six more data families. Building off of the TERN STAC access provided by `rstac` would have allowed more generality for the dataset access, but also would have meant that the mechanism for accessing each data product would need to be discerned by the user. By contrast, `nert` reads seven TERN dataset families in a user-friendly way, making sure that a query returns the right dataset requested, or declines with an explicit and human-readable reason.
 
 # Software design
 
@@ -108,30 +108,20 @@ Four vignettes cover getting started, agricultural analytics, reading only part 
 
 # Research impact statement
 
-`nert` was approved after rOpenSci software peer review, with two reviewers, in October 2026 [@review785].
-The package was developed in the Analytics for the Australian Grains Industry (AAGI) program to supply TERN's data as covariates for agricultural analysis.
-Its vignette [*Using nert to augment agricultural analytics with SMIPS data*](https://docs.ropensci.org/nert/articles/nert_for_agricultural_analytics.html) works through such an analysis, adding daily soil moisture to field data and fitting a mixed model, and can be reused as a template.
+`nert` was approved through rOpenSci software peer review, with two reviewers, in October 2026 [@review785].
+The package was developed through the Analytics for the Australian Grains Industry (AAGI) project, via the Research & Development projects AAGI-UA-RD-RNS and AAGI-AU-RD-RNT2 to supply TERN's data as covariates for use in agricultural analysis. The `nert` vignette [*Using nert to augment agricultural analytics with SMIPS data*](https://docs.ropensci.org/nert/articles/nert_for_agricultural_analytics.html) works through such an analysis, adding daily soil moisture to field data and fitting a mixed model, and can be reused as a template.
 
 # AI usage disclosure
 
-We used generative AI tools in developing `nert` and in preparing this paper.
-The first release, v0.0.1 (April 2025), was written without them.
-Later versions were developed with Anthropic's Claude models (Opus 4.6 to 4.8, Sonnet 4.6 and Opus 5.5) through the Claude Code assistant, which helped draft code, documentation and tests.
-GitHub Copilot's coding agent wrote 12 commits, including an option to choose between the two canopy height products.
-A maintainer reviewed and merged each of these commits.
+We used generative AI tools in developing `nert`, and in preparing this paper.
+The first release of the `nert` package, v0.0.1 (April 2025), was developed without the use of AI assistance. Later versions of `nert` were developed with Anthropic's Claude AI models (specifically Opus 4.6-4.8, Sonnet 4.6 and Opus 5.5) together with the Claude Code harness. The AI model was used to help draft code, write function documentation, and write unit tests.
+GitHub Copilot's coding agent wrote 12 GitHub commits for the `nert` package during its development, including an option to choose between the two canopy height products.
+In all cases, a human maintainer reviewed the AI-assisted development work, and extensive local testing was conducted to ensure that the `nert` package performed as expected in end-user environments.
 
-Claude introduced two errors in v1.0.0.
-The phenology function offered variables that the product does not contain, and the soil function offered confidence intervals that it could not retrieve.
-Co-authors found both, and v1.1.0 fixed them.
-This paper was drafted and revised with Claude Opus 5.5.
-An earlier draft was reviewed with xAI's Grok 4.7.
-The authors made the design decisions, reviewed all assisted output and take responsibility for the code and this paper.
-Dataset paths, date limits and examples were checked against TERN's data server and catalogue.
+This paper was drafted and revised with Claude Opus 5.5, and an earlier draft of this paper was reviewed with xAI's Grok 4.7. The authors made the design decisions, reviewed all AI-assisted output, and take full accountability for this paper and its representation of the `nert` package.
 
 # Acknowledgements
 
-We acknowledge the support of the Grains Research and Development Corporation (GRDC) through the Analytics for the Australian Grains Industry (AAGI) projects UOA2301-005OPX (AAGI-AU) and CUR2210-005OPX (AAGI-CU).
-We thank Michael Sumner and Shandiya Balasubramaniam for reviewing `nert` for rOpenSci, and Lauren O'Brien, the author of `slga`, for editing the [review](https://github.com/ropensci/software-review/issues/785).
-We thank TERN for making these products openly available.
+We acknowledge the support of the Grains Research and Development Corporation (GRDC) through the Analytics for the Australian Grains Industry (AAGI) project, GRDC project codes UOA2301-005OPX (AAGI-AU) and CUR2210-005OPX (AAGI-CU). We thank Michael Sumner and Shandiya Balasubramaniam for reviewing `nert` for rOpenSci, and Lauren O'Brien, the author of `slga`, for editing the [review](https://github.com/ropensci/software-review/issues/785). We thank TERN for making these useful data products openly available.
 
 # References
