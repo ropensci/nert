@@ -57,7 +57,7 @@ Agronomists, soil scientists, and ecologists often need environmental informatio
 Obtaining these data manually requires several steps for each product.
 The user must identify the appropriate COG, construct its URL, provide a valid TERN API key, confirm that the requested date is available for that product, and then either download the entire COG or access it remotely from the TERN Data Portal using software such as the Geospatial Data Abstraction Library (GDAL) [@GDAL2026].
 A small error in a file path or date can result in no file being returned or, more problematically, the wrong file being retrieved without warning.
-`nert` simplifies this process, reducing the opportunity for query errors while making TERN data easier to use in reproducible analyses.
+`nert` simplifies this process for R users, reducing the opportunity for query errors while making TERN data easier to use in reproducible analyses and providing easy access to TERN data directly in their local R session.
 
 # Alternative packages
 
