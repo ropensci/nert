@@ -57,13 +57,7 @@ Agronomists, soil scientists, and ecologists often need environmental informatio
 Obtaining these data manually requires several steps for each product.
 The user must identify the appropriate COG, construct its URL, provide a valid TERN API key, confirm that the requested date is available for that product, and then either download the entire COG or access it remotely from the TERN Data Portal using software such as the Geospatial Data Abstraction Library (GDAL) [@GDAL2026].
 A small error in a file path or date can result in no file being returned or, more problematically, the wrong file being retrieved without warning.
-
 `nert` simplifies this process, reducing the opportunity for query errors while making TERN data easier to use in reproducible analyses.
-For products that vary through time, `nert` checks a requested date against the temporal extent of the product before attempting data access.
-If the date falls outside that extent, the request is rejected and the error message reports the dates available for that product.
-
-Access to these products through the TERN Data Portal requires a free API key.
-The getting-started vignette provides step-by-step instructions, with screenshots, for obtaining a TERN API key and storing it securely in the system keyring for use with `nert`.
 
 # Alternative packages
 
@@ -88,6 +82,9 @@ By contrast, `nert` provides a consistent interface to seven TERN dataset famili
 
 `nert` was designed to simplify access to the TERN API while following best practices for security and R package development.
 It abstracts away much of the underlying API interaction, making it straightforward to configure an API key and find and access TERN data from an R session.
+
+Access to these products through the TERN Data Portal requires a free API key.
+The getting-started vignette provides step-by-step instructions, with screenshots, for obtaining a TERN API key and storing it securely in the operating system's keyring using `keychain` [@keychain] for use with `nert`.
 
 API GET requests are handled through GDAL's virtual file system for remote files.
 Only the portions of a file needed for a requested point or spatial crop are transferred, as described in the [*Bandwidth-safe spatial subsetting*](https://docs.ropensci.org/nert/articles/bandwidth_safe_subsetting.html) vignette.
@@ -114,6 +111,9 @@ Columns are named by product alias and collection, such as `SMIPS_totalbucket` o
 Time-varying layers are opened once per date, whereas static layers are opened once and their values reused across dates.
 The resulting table can therefore be joined directly to field observations (\autoref{fig:flow}).
 If a layer cannot be read, its columns are filled with `NA`, a warning is issued, and the remainder of the table is still returned.
+
+For products that vary through time, `nert` checks a requested date against the temporal extent of the product before attempting data access.
+If the date falls outside that extent, the request is rejected and the error message reports the dates available for that product.
 
 Because file locations are encoded in the package, a new release is required if TERN moves a source file.
 Snapshot tests guard the URL templates against accidental changes during package development.
