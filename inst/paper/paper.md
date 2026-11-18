@@ -43,7 +43,7 @@ Australia's Terrestrial Ecosystem Research Network (TERN) publishes several nati
 These products comprise large files stored in the cloud-optimised GeoTIFF (COG) format on TERN's data server, together with associated metadata.
 Each product has its own directory structure, file-naming convention, temporal resolution, date range, and map projection.
 
-`nert` is an R package that provides a consistent interface for reading these seven families of data.
+`nert` is an R package that provides a consistent interface for reading these seven data products.
 The `read_tern()` function returns a requested dataset as a `terra` `SpatRaster` [@terra], transferring only the requested data rather than downloading an entire Australia-wide dataset.
 For queries spanning multiple products, locations, or dates, `collect_tern_data()` returns the requested values as a single `data.table` [@datatable].
 Both functions provide convenient access to the seven dataset families through 20 short names, or aliases, such as `"SMIPS"` for soil moisture and `"CLY"` for clay content.
