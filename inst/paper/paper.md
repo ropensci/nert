@@ -55,7 +55,7 @@ The source code is openly available at <https://www.github.com/ropensci/nert>.
 
 Agronomists, soil scientists, and ecologists often need environmental information from TERN's COGs for specific locations and dates, for example to characterise field trials or support agronomic planning.
 Obtaining these data manually requires several steps for each product.
-The user must identify the appropriate COG, construct its URL, provide a valid TERN API key, confirm that the requested date is available for that product, and then either download the entire COG or access it remotely from the TERN Data Portal using software such as the Geospatial Data Abstraction Library (GDAL) [@GDAL2026].
+The user must identify the appropriate COG, construct its URL, provide a valid TERN API key, confirm that the requested date is available for that product, and then either download the entire COG or access it remotely from the TERN Data Portal using software, such as the Geospatial Data Abstraction Library (GDAL) [@GDAL2026].
 A small error in a file path or date can result in no file being returned or, more problematically, the wrong file being retrieved without warning.
 `nert` simplifies this process for R users, reducing the opportunity for query errors while making TERN data easier to use in reproducible analyses and providing easy access to TERN data directly in their local R session.
 
@@ -81,10 +81,10 @@ By contrast, `nert` provides a consistent interface to seven TERN dataset famili
 # Software design
 
 `nert` was designed to simplify access to the TERN API while following best practices for security and R package development.
-It abstracts away much of the underlying API interaction, making it straightforward to configure an API key and find and access TERN data from an R session.
+It abstracts away much of the underlying API interaction, making it straightforward to configure an API key, and find and access TERN data from an R session.
 
 Access to these products through the TERN Data Portal requires a free API key.
-The [*Get started*](https://docs.ropensci.org/nert/articles/nert.html) vignette provides step-by-step instructions, with screenshots, for obtaining a TERN API key and storing it securely in the operating system's keyring using `keychain` [@keychain] for use with `nert`.
+The [*Get started*](https://docs.ropensci.org/nert/articles/nert.html) vignette provides step-by-step instructions, with screenshots, for obtaining a TERN API key and storing it securely in the operating system's credential store for use with `nert`.
 
 API GET requests are handled through GDAL's virtual file system for the remote COGs.
 This improves efficiency when downloading the TERN data layers, as only the portions of the COG needed for a requested point or spatial area are transferred, as described in the [*Bandwidth-safe spatial subsetting*](https://docs.ropensci.org/nert/articles/bandwidth_safe_subsetting.html) vignette.
@@ -92,10 +92,10 @@ For added security, the TERN API key is passed to GDAL as a configuration settin
 
 Functions in `nert` fall into two broad groups: reader functions and helper functions.
 
-- The `read_*()` family of functions provides the core functionality of the package, retrieving TERN data products and importing them into the R session. Each TERN data-product family has a dedicated reader, such as `read_smips()` or `read_aet()`, for convenient interactive use. Alternatively, `read_tern()` accepts a product alias, for example `read_tern("SMIPS", date = "2024-01-15")`, where aliases are supplied as case-insensitive character strings. Some of the data products vary across time, and so their `read_*()` functions accept a date parameter. The dates are checked against the temporal extent for the specific data product requested before any API calls are made, and if the date falls outside of the extent, the request is rejected, with a helpful error message that reports the range of dates available for the product.
+- The `read_*()` family of functions provides the core functionality of the package, retrieving TERN data products and importing them into the R session. Each TERN data-product family has a dedicated reader, such as `read_smips()` or `read_aet()`, for convenient interactive use. Alternatively, `read_tern()` accepts a product alias, for example `read_tern("SMIPS", date = "2024-01-15")`, where aliases are supplied as case-insensitive character strings. Some of the data products vary across time, and so their `read_*()` functions accept a date parameter, with an exception of read_phenology() taking a year. The dates are checked against the temporal extent for the specific data product requested before any API calls are made, and if the date falls outside of the extent, the request is rejected, with a helpful error message that reports the limits of dates available for the product.
 - Three useful helper functions support dataset discovery, API-key management, and aggregation. `show_datasets()` lists the TERN datasets available through the API and accessible with `nert`. The `get_key()` function manages the API key securely using the `keyring` package [@keyring] and prompts the user to set a key if none is found. Finally, `collect_tern_data()` builds on the `read_*()` functions to extract any selection of the supported data products for a given set of location sites over a specified set of dates or date range. Sites can be supplied either as individual coordinates (`lon`, `lat`) or as a `data.frame`, `data.table` [@datatable], or `matrix` containing coordinate columns named `lon`/`lat` or `x`/`y`. `collect_tern_data()` returns a `data.table` [@datatable], which is also compatible with a base R `data.frame`, with one row for each site-date combination and columns for the requested datasets. This structure follows the principles of tidy data [@hadley].
 
-Crucially, the `nert` package has been designed so that it embeds seamlessly into existing R analytics workflows. The `read_tern()` function combines well with the `show_datasets()` helper function and is particularly useful in scripts and scheduled pipelines, since aliases can be obtained from `show_datasets()` on-the-fly and the data products can be iterated over without requiring a separate function call for each one. Similarly, `collect_tern_data()` only opens its datasets once per date, and the temporally-static datasets are only opened once across all dates, minimising the API GET requests required. The resulting table of data lists the retrieved data in separate columns with one row per date, and so can typically be joined directly to field observations (\autoref{fig:flow}). In instances where the data product could not be retrieved, that value is filled as an `NA`, a helpful warning is issued, and the remainder of the datasets are retrieved for the table.
+Crucially, the `nert` package has been designed so that it embeds seamlessly into existing R analytics workflows. The `read_tern()` function combines well with the `show_datasets()` helper function and is particularly useful in scripts and scheduled pipelines, since aliases can be obtained from `show_datasets()` on-the-fly and the data products can be iterated over without requiring a separate function call for each one. Similarly, `collect_tern_data()` only opens its datasets once per date, and the temporally-static datasets are only opened once across all dates, minimising the API GET requests required. The resulting table of data lists the retrieved data in separate columns with one row per site per date, and so can typically be joined directly to field observations (\autoref{fig:flow}). In instances where the data product could not be retrieved, that value is filled as an `NA`, a helpful warning is issued, and the remainder of the datasets are retrieved for the table.
 
 ![A diagram showing how `nert` downloads and imports data. Both `read_tern()` (top) and `collect_tern_data()` (bottom) validate the request, construct the URL, and use GDAL to transfer only the required portions of the file. `collect_tern_data()` repeats this process for each requested layer, once per date for time-varying layers and once for static layers. The example shows daily soil moisture for 15 January 2024.\label{fig:flow}](figure_dataflow.png){width=100%}
 
@@ -103,7 +103,7 @@ Crucially, the `nert` package has been designed so that it embeds seamlessly int
 
 `nert` provides product-specific handling that is not provided by a general STAC catalogue.
 For example, two of the six soil-moisture collections begin in 2005, while the remaining four begin in 2015.
-The phenology product covers 2003 to 2018 and contains two growing seasons per year.
+The phenology product covers years 2003 to 2018 and contains two growing seasons per year.
 Canopy height is provided in the Australian Albers projection (EPSG:3577), rather than longitude and latitude.
 
 `nert` handles these product-specific differences for the user.
@@ -118,7 +118,7 @@ The `nert` vignette [*Using nert to augment agricultural analytics with SMIPS da
 
 We used generative AI tools during the development of `nert` and the preparation of this paper.
 The first release of `nert`, v0.0.1 (April 2025), was developed without AI assistance.
-Later versions were developed with Anthropic's Claude models, specifically Opus 4.6--4.8, Sonnet 4.6, and Opus 5.5, together with the Claude Code harness.
+Later versions were developed with Anthropic's Claude models, specifically Opus 4.6--4.8, Sonnet 4.6, and Opus 5.5, operating within the Claude Code harness.
 These tools were used to assist with drafting code, writing function documentation, and developing unit tests.
 GitHub Copilot's coding agent produced 12 commits during the development of `nert`, including an option to choose between the two canopy-height products.
 In all cases, a human maintainer reviewed the AI-assisted development work, and extensive local testing was used to ensure that `nert` performed as expected in end-user environments.
