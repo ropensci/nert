@@ -84,39 +84,18 @@ By contrast, `nert` provides a consistent interface to seven TERN dataset famili
 It abstracts away much of the underlying API interaction, making it straightforward to configure an API key and find and access TERN data from an R session.
 
 Access to these products through the TERN Data Portal requires a free API key.
-The getting-started vignette provides step-by-step instructions, with screenshots, for obtaining a TERN API key and storing it securely in the operating system's keyring using `keychain` [@keychain] for use with `nert`.
+The [*Get started*](https://docs.ropensci.org/nert/articles/nert.html) vignette provides step-by-step instructions, with screenshots, for obtaining a TERN API key and storing it securely in the operating system's keyring using `keychain` [@keychain] for use with `nert`.
 
-API GET requests are handled through GDAL's virtual file system for remote files.
-Only the portions of a file needed for a requested point or spatial crop are transferred, as described in the [*Bandwidth-safe spatial subsetting*](https://docs.ropensci.org/nert/articles/bandwidth_safe_subsetting.html) vignette.
-The API key is passed to GDAL as a configuration setting and is never included in the URL.
+API GET requests are handled through GDAL's virtual file system for the remote COGs.
+This improves efficiency when downloading the TERN data layers, as only the portions of the COG needed for a requested point or spatial area are transferred, as described in the [*Bandwidth-safe spatial subsetting*](https://docs.ropensci.org/nert/articles/bandwidth_safe_subsetting.html) vignette.
+For added security, the TERN API key is passed to GDAL as a configuration setting, rather than included in the request URL.
 
 Functions in `nert` fall into two broad groups: reader functions and helper functions.
-The `read_*()` family provides the core functionality, retrieving TERN data and importing it into the R session.
-Three helper functions support dataset discovery, API-key management, and aggregation.
-`show_datasets()` lists the TERN datasets available through the API and accessible with `nert`.
-`get_key()` manages the API key securely using the `keyring` package [@keyring] and prompts the user to set a key if none is found.
-`collect_tern_data()` builds on the `read_*()` functions to extract any selection of the 20 supported products for a set of sites over a date range or specified dates.
 
-Each TERN data-product family has a dedicated reader, such as `read_smips()` or `read_aet()`, for convenient interactive use.
-Alternatively, `read_tern()` accepts a product alias, for example `read_tern("SMIPS", date = "2024-01-15")`.
-Aliases are supplied as case-insensitive character strings.
-This makes `read_tern()` particularly useful in scripts and scheduled pipelines: aliases can be obtained from `show_datasets()` or read from a configuration file, allowing code to iterate over products without requiring a separate function call for each one.
+- The `read_*()` family of functions provides the core functionality of the package, retrieving TERN data products and importing them into the R session. Each TERN data-product family has a dedicated reader, such as `read_smips()` or `read_aet()`, for convenient interactive use. Alternatively, `read_tern()` accepts a product alias, for example `read_tern("SMIPS", date = "2024-01-15")`, where aliases are supplied as case-insensitive character strings. Some of the data products vary across time, and so their `read_*()` functions accept a date parameter. The dates are checked against the temporal extent for the specific data product requested before any API calls are made, and if the date falls outside of the extent, the request is rejected, with a helpful error message that reports the range of dates available for the product.
+- Three useful helper functions support dataset discovery, API-key management, and aggregation. `show_datasets()` lists the TERN datasets available through the API and accessible with `nert`. The `get_key()` function manages the API key securely using the `keyring` package [@keyring] and prompts the user to set a key if none is found. Finally, `collect_tern_data()` builds on the `read_*()` functions to extract any selection of the supported data products for a given set of location sites over a specified set of dates or date range. Sites can be supplied either as individual coordinates (`lon`, `lat`) or as a `data.frame`, `data.table` [@datatable], or `matrix` containing coordinate columns named `lon`/`lat` or `x`/`y`. `collect_tern_data()` returns a `data.table` [@datatable], which is also compatible with a base R `data.frame`, with one row for each site-date combination and columns for the requested datasets. This structure follows the principles of tidy data [@hadley].
 
-Sites can be supplied either as individual coordinates (`lon`, `lat`) or as a `data.frame`, `data.table` [@datatable], or `matrix` containing coordinate columns named `lon`/`lat` or `x`/`y`.
-When a table or matrix of sites is supplied, it takes precedence over individual coordinate values.
-`collect_tern_data()` returns a `data.table` [@datatable], which is also compatible with a base R `data.frame`, with one row for each site-date combination and columns for the requested datasets.
-This structure follows the principles of tidy data [@hadley].
-Columns are named by product alias and collection, such as `SMIPS_totalbucket` or `AET_ETa`, so a single alias can produce multiple columns.
-
-Time-varying layers are opened once per date, whereas static layers are opened once and their values reused across dates.
-The resulting table can therefore be joined directly to field observations (\autoref{fig:flow}).
-If a layer cannot be read, its columns are filled with `NA`, a warning is issued, and the remainder of the table is still returned.
-
-For products that vary through time, `nert` checks a requested date against the temporal extent of the product before attempting data access.
-If the date falls outside that extent, the request is rejected and the error message reports the dates available for that product.
-
-Because file locations are encoded in the package, a new release is required if TERN moves a source file.
-Snapshot tests guard the URL templates against accidental changes during package development.
+Crucially, the `nert` package has been designed so that it embeds seamlessly into existing R analytics workflows. The `read_tern()` function combines well with the `show_datasets()` helper function and is particularly useful in scripts and scheduled pipelines, since aliases can be obtained from `show_datasets()` on-the-fly and the data products can be iterated over without requiring a separate function call for each one. Similarly, `collect_tern_data()` only opens its datasets once per date, and the temporally-static datasets are only opened once across all dates, minimising the API GET requests required. The resulting table of data lists the retrieved data in separate columns with one row per date, and so can typically be joined directly to field observations (\autoref{fig:flow}). In instances where the data product could not be retrieved, that value is filled as an `NA`, a helpful warning is issued, and the remainder of the datasets are retrieved for the table.
 
 ![A diagram showing how `nert` downloads and imports data. Both `read_tern()` (top) and `collect_tern_data()` (bottom) validate the request, construct the URL, and use GDAL to transfer only the required portions of the file. `collect_tern_data()` repeats this process for each requested layer, once per date for time-varying layers and once for static layers. The example shows daily soil moisture for 15 January 2024.\label{fig:flow}](figure_dataflow.png){width=100%}
 
